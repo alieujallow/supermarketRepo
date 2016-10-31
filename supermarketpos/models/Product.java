@@ -6,15 +6,24 @@
 package supermarketpos.models;
 
 /**
- *
+ * A class to represent a product to be sold in a supermarket.
+ * 
  * @author Anthony
  */
 public class Product {
     
+    //Instance variables
     private String productName;
     private double price;
     private int quantity;
     
+    /**
+     * A constructor that initializes the values of the instance variables.
+     * 
+     * @param productName name of the product.
+     * @param price price of the product.
+     * @param quantity quantity of the product.
+     */
     public Product(String productName, double price, int quantity){
         this.productName = productName;
         this.price = price;
