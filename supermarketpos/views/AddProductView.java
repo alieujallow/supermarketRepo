@@ -5,6 +5,8 @@
  */
 package supermarketpos.views;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author Anthony
@@ -27,21 +29,73 @@ public class AddProductView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        productNameJtf = new javax.swing.JTextField();
+        quantityJtf = new javax.swing.JTextField();
+        priceJtf = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Product name");
+
+        jLabel2.setText("Quantity");
+
+        jLabel3.setText("Price");
+
+        productNameJtf.setColumns(20);
+        productNameJtf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productNameJtfActionPerformed(evt);
+            }
+        });
+
+        quantityJtf.setColumns(20);
+
+        priceJtf.setColumns(20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(productNameJtf)
+                    .addComponent(quantityJtf)
+                    .addComponent(priceJtf))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(productNameJtf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(quantityJtf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(priceJtf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void productNameJtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productNameJtfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productNameJtfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +131,25 @@ public class AddProductView extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JTextField getPriceJtf(){
+        return priceJtf;
+    }
+    
+    public JTextField getProductNameJtf(){
+        return productNameJtf;
+    }
+    
+    public JTextField getQuantityJtf(){
+        return quantityJtf;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField priceJtf;
+    private javax.swing.JTextField productNameJtf;
+    private javax.swing.JTextField quantityJtf;
     // End of variables declaration//GEN-END:variables
 }
