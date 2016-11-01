@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database 
 {
@@ -155,6 +156,30 @@ public class Database
             }
         }
     }
+    
+    
+    //returns the column headers in an array
+     public String[] getColumnHeaders() {
+        String[] columnNames = null;
+        ResultSet  resultSet;
+        try {
+            Statement statement = conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM products");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            columnNames = new String[numberOfColumns];
+
+            for (int i = 1; i <= numberOfColumns; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+            }
+        } catch (Exception ex) {
+
+        }
+        return columnNames;
+    }
+    
+    
+    
   public static void main(String[]args)
   {
     Database db = new Database();
