@@ -48,8 +48,6 @@ public class MenuController implements ActionListener{
             AllProductsController productsController = new AllProductsController(productsView);
             productsController.control();
         }
-    }
-    
-    
-    
+    }  
 }
+

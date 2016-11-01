@@ -25,6 +25,8 @@ public class AllProductsController implements ActionListener{
         view.getEditProductBtn().addActionListener(this);
         view.getDeleteProductBtn().addActionListener(this);
         
+        view.setTitle("All Products");
+        view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
     

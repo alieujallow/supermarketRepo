@@ -25,6 +25,8 @@ public class TransactionController implements ActionListener{
         view.getCancelTransactionBtn().addActionListener(this);
         view.getProceedTransactionBtn().addActionListener(this);
         
+        view.setTitle("Make Transaction");
+        view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
     
