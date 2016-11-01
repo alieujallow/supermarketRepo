@@ -7,6 +7,7 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import supermarketpos.models.Database;
 import supermarketpos.views.AddProductView;
 import supermarketpos.views.AllProductsView;
 import supermarketpos.views.MenuView;
@@ -35,7 +36,8 @@ public class MenuController implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == view.getAddProductBtn()){
             AddProductView productView = new AddProductView();
-            AddProductController productController = new AddProductController(productView);
+            Database db = new Database();
+            AddProductController productController = new AddProductController(productView, db);
             productController.control();
         }
         else if(e.getSource() == view.getMakeTransactionBtn()){

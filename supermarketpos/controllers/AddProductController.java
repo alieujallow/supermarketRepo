@@ -7,6 +7,8 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import supermarketpos.models.Database;
 import supermarketpos.views.AddProductView;
 
 /**
@@ -16,9 +18,11 @@ import supermarketpos.views.AddProductView;
 public class AddProductController implements ActionListener{
     
     AddProductView view = null;
+    Database db = null;
     
-    public AddProductController(AddProductView view){
+    public AddProductController(AddProductView view, Database db){
         this.view = view;
+        this.db = db;
     }
     
     public void control(){
@@ -36,8 +40,12 @@ public class AddProductController implements ActionListener{
             double price = Double.parseDouble(view.getPriceJtf().getText());
             int quantity = Integer.parseInt(view.getQuantityJtf().getText());
             
-            //call the method that adds to the database and pass the required
-            //arguments
+            db.addProductTodatabase(productName, price, quantity);
+            JOptionPane.showMessageDialog(null, "Product added successfully");
+            
+            view.getProductNameJtf().setText("");
+            view.getPriceJtf().setText("");
+            view.getQuantityJtf().setText("");
         }
         else if(e.getSource() == view.getCancelBtn()){
             view.dispose();

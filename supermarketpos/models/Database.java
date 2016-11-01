@@ -46,12 +46,10 @@ public class Database {
             }
         }
         catch(Exception ex){
-            System.err.println(ex);
+            System.err.println(ex.getMessage());
         }
         
         return isValid;
     }
-    
-    
-    
+     
 }
