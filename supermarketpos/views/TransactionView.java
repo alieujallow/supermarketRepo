@@ -5,6 +5,8 @@
  */
 package supermarketpos.views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Anthony
@@ -27,21 +29,56 @@ public class TransactionView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cancelTransactionBtn = new javax.swing.JButton();
+        proceedTransactionBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cancelTransactionBtn.setText("CANCEL");
+        cancelTransactionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelTransactionBtnActionPerformed(evt);
+            }
+        });
+
+        proceedTransactionBtn.setText("PROCEED");
+        proceedTransactionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                proceedTransactionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(414, Short.MAX_VALUE)
+                .addComponent(cancelTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(proceedTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelTransactionBtn)
+                    .addComponent(proceedTransactionBtn))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void proceedTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedTransactionBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_proceedTransactionBtnActionPerformed
+
+    private void cancelTransactionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelTransactionBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelTransactionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +114,17 @@ public class TransactionView extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JButton getProceedTransactionBtn(){
+        return proceedTransactionBtn;
+    }
+    
+    public JButton getCancelTransactionBtn(){
+        return cancelTransactionBtn;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelTransactionBtn;
+    private javax.swing.JButton proceedTransactionBtn;
     // End of variables declaration//GEN-END:variables
 }
