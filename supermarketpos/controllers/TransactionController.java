@@ -5,10 +5,36 @@
  */
 package supermarketpos.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import supermarketpos.views.TransactionView;
+
 /**
  *
  * @author Anthony
  */
-public class TransactionController {
+public class TransactionController implements ActionListener{
+    
+    TransactionView view = null;
+    
+    public TransactionController(TransactionView view){
+        this.view = view;
+    }
+    
+    public void control(){
+        view.getCancelTransactionBtn().addActionListener(this);
+        view.getProceedTransactionBtn().addActionListener(this);
+        
+        view.setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == view.getCancelTransactionBtn()){
+            view.dispose();
+        }
+        else if(e.getSource() == view.getProceedTransactionBtn()){
+        
+        }
+    }
     
 }

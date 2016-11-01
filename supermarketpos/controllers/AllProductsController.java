@@ -5,10 +5,36 @@
  */
 package supermarketpos.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import supermarketpos.views.AllProductsView;
+
 /**
  *
  * @author Anthony
  */
-public class AllProductsController {
+public class AllProductsController implements ActionListener{
+    
+    AllProductsView view = null;
+    
+    public AllProductsController(AllProductsView view){
+        this.view = view;
+    }
+    
+    public void control(){
+        view.getEditProductBtn().addActionListener(this);
+        view.getDeleteProductBtn().addActionListener(this);
+        
+        view.setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == view.getEditProductBtn()){
+        
+        }
+        else if(e.getSource() == view.getDeleteProductBtn()){
+        
+        }
+    }
     
 }

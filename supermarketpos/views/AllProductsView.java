@@ -5,6 +5,8 @@
  */
 package supermarketpos.views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Anthony
@@ -35,6 +37,11 @@ public class AllProductsView extends javax.swing.JFrame {
         deleteProductBtn.setText("DELETE");
 
         editProductBtn.setText("EDIT");
+        editProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editProductBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,7 +57,7 @@ public class AllProductsView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(242, Short.MAX_VALUE)
+                .addContainerGap(481, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteProductBtn)
                     .addComponent(editProductBtn))
@@ -59,6 +66,10 @@ public class AllProductsView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProductBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editProductBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +104,14 @@ public class AllProductsView extends javax.swing.JFrame {
                 new AllProductsView().setVisible(true);
             }
         });
+    }
+    
+    public JButton getDeleteProductBtn(){
+        return deleteProductBtn;
+    }
+    
+     public JButton getEditProductBtn(){
+        return editProductBtn;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
