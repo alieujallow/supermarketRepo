@@ -145,6 +145,16 @@ public class Database
         return rows;
     }
     
+    // closes the database connection
+    public void closeDatabaseConnection() {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
   public static void main(String[]args)
   {
     Database db = new Database();
