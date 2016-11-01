@@ -1,14 +1,88 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package supermarketpos.models;
-
 /**
  *
- * @author Anthony
+ * @author Alieu
  */
-public class Database {
+
+import com.mysql.jdbc.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+public class Database 
+{
+     Connection conn = null;
+  // connects to the database and create tables
+  public void connectToDatabase()
+  {
+    final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    final String DB_URL = "jdbc:mysql://localhost/";
     
+    //  Database credentials
+    final String USER = "root";
+    final String PASSWORD = "";
+    Statement statement;
+    try {
+      //Register JDBC driver
+      Class.forName(JDBC_DRIVER);
+      
+      //Open a connection
+      conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+      
+      //createa query
+      statement = conn.createStatement();
+      String createDatabase = "CREATE DATABASE IF NOT EXISTS supermarketdatabase;";
+      
+      String useDatabase = "USE supermarketdatabase;";
+      
+      String createProductTable = "CREATE TABLE IF NOT EXISTS products(\n"
+        + "  productID Int UNIQUE NOT NULL AUTO_INCREMENT,\n"
+        + "  productName char(100),\n"
+        + "  price decimal,\n"
+        + "  quantity Int,\n"
+        + "  primary key (productID) \n"
+        + ");";
+      
+      String createEmployeesTable = "CREATE TABLE IF NOT EXISTS employees(\n"
+        + "  employeeID Int UNIQUE NOT NULL AUTO_INCREMENT,\n"
+        + "  name char(100),\n"
+        + "  role char(100),\n"
+        + "  userName char(100),\n"
+        + "  password char(100),\n"
+        + "  primary key (employeeID) \n"
+        + ");";
+      
+      
+      /*  String createTransactionsTable = "CREATE TABLE IF NOT EXISTS transactions(\n"
+       + "  transactionID Int UNIQUE NOT NULL AUTO_INCREMENT IDENTITY(1,1),\n"
+       + "  name char(100),\n"
+       + "  role char(100),\n"
+       + "  userName char(100),\n"
+       + "  password char(100),\n"
+       + "  primary key (employeeID) \n"
+       + ");";*/
+      
+      //Execute a query
+      statement.executeUpdate(createDatabase);
+      statement.executeUpdate(useDatabase);
+      statement.executeUpdate(createProductTable);
+      statement.executeUpdate(createEmployeesTable);
+      
+    }
+    catch (Exception ex)
+    {
+      System.err.println("Could not connect to the database");
+      System.err.println(ex);
+    }
+    finally
+    {
+      
+    }
+  }
+  
+  public static void main(String[]args)
+  {
+    Database db = new Database();
+    db.connectToDatabase();
+  }
 }

@@ -3,12 +3,13 @@
  * @author Alieu
  */
 
-import com.mysql.jdbc.PreparedStatement;
+//import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+
 public class Database 
 {
      Connection conn = null;
@@ -80,9 +81,34 @@ public class Database
     }
   }
   
+   //adding to the database
+    public void addProductTodatabase(String productName, double price, int quantity) 
+    {
+        try {
+            String query = " insert into products ( productName,price,quantity)"
+                    + " values (?, ?, ?)";
+            java.sql.PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setString(1, productName);
+            preparedStatement.setDouble(2, price);
+            preparedStatement.setInt(3, quantity);
+            preparedStatement.execute();
+        } catch (Exception ex)
+        {
+            System.out.println(ex);
+            System.err.println("Could not add to the database");
+        }
+    }
+  
+  
+
+  
+  
+  
+  
   public static void main(String[]args)
   {
     Database db = new Database();
     db.connectToDatabase();
+    db.addProductTodatabase("donsimon",3.9,9);
   }
 }
