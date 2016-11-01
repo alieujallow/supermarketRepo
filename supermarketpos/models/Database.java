@@ -101,10 +101,30 @@ public class Database
   
   
 
-  
-  
-  
-  
+   //deleting from the database
+    public void delete(String name)
+    {
+        ResultSet resultSet;
+        try {
+            Statement statement = conn.createStatement();
+            resultSet = statement.executeQuery("SELECT productName FROM products");
+            while (resultSet.next())
+            {
+                if (resultSet.getString(1).equalsIgnoreCase(name))
+                {
+                    String deleteProduct = "DELETE FROM products WHERE productName= ?";
+                    java.sql.PreparedStatement preparedStatement = conn.prepareStatement(deleteProduct);
+                    preparedStatement.setString(1, name);
+                    preparedStatement.execute();
+                    break;
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.err.println("Could not DELETE.............");
+        }
+    }
+ 
   public static void main(String[]args)
   {
     Database db = new Database();
