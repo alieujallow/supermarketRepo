@@ -98,8 +98,6 @@ public class Database
             System.err.println("Could not add to the database");
         }
     }
-  
-  
 
    //deleting from the database
     public void delete(String name)
@@ -125,6 +123,28 @@ public class Database
         }
     }
  
+     //fetching products' information from the database. It returns an arrayList of the products.
+    public ArrayList fetchDataFromDatabase() {
+        ResultSet resultSet;
+        ArrayList<String[]> rows = new ArrayList<>();
+        try {
+             Statement statement = conn.createStatement();
+             resultSet = statement.executeQuery("SELECT * FROM products");
+            while (resultSet.next()) {
+                String[] tmp = new String[4];
+                tmp[0] = resultSet.getString(1);
+                tmp[1] = resultSet.getString(2);
+                tmp[2] = resultSet.getString(3);
+                tmp[3] = resultSet.getString(4);
+                rows.add(tmp);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.err.println("Could not fetch.............");
+        }
+        return rows;
+    }
+    
   public static void main(String[]args)
   {
     Database db = new Database();
