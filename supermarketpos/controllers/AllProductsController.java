@@ -7,6 +7,7 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import supermarketpos.models.TableModel;
 import supermarketpos.views.AllProductsView;
 
 /**
@@ -16,9 +17,13 @@ import supermarketpos.views.AllProductsView;
 public class AllProductsController implements ActionListener{
     
     AllProductsView view = null;
+    TableModel model;
     
-    public AllProductsController(AllProductsView view){
+    public AllProductsController(AllProductsView view, TableModel model){
         this.view = view;
+        this.model = model;
+        
+        view.getTable().setModel(model);
     }
     
     public void control(){

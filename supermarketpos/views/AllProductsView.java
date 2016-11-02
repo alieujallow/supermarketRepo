@@ -6,6 +6,8 @@
 package supermarketpos.views;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
+
 
 /**
  *
@@ -31,6 +33,8 @@ public class AllProductsView extends javax.swing.JFrame {
 
         deleteProductBtn = new javax.swing.JButton();
         editProductBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productsTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,25 +47,41 @@ public class AllProductsView extends javax.swing.JFrame {
             }
         });
 
+        productsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(productsTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(418, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(deleteProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(29, 29, 29)
                 .addComponent(editProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(481, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteProductBtn)
-                    .addComponent(editProductBtn))
-                .addGap(26, 26, 26))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editProductBtn)
+                    .addComponent(deleteProductBtn))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -110,12 +130,17 @@ public class AllProductsView extends javax.swing.JFrame {
         return deleteProductBtn;
     }
     
-     public JButton getEditProductBtn(){
+    public JButton getEditProductBtn(){
         return editProductBtn;
     }
-
+    
+    public JTable getTable(){
+        return productsTable;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteProductBtn;
     private javax.swing.JButton editProductBtn;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable productsTable;
     // End of variables declaration//GEN-END:variables
 }

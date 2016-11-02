@@ -8,6 +8,7 @@ package supermarketpos.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import supermarketpos.models.Database;
+import supermarketpos.models.TableModel;
 import supermarketpos.views.AddProductView;
 import supermarketpos.views.AllProductsView;
 import supermarketpos.views.MenuView;
@@ -47,7 +48,8 @@ public class MenuController implements ActionListener{
         }
         else if(e.getSource() == view.getViewProductBtn()){
             AllProductsView productsView = new AllProductsView();
-            AllProductsController productsController = new AllProductsController(productsView);
+            TableModel model = TableModel.getInstance();
+            AllProductsController productsController = new AllProductsController(productsView, model);
             productsController.control();
         }
     }  
