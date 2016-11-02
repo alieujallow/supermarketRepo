@@ -5,6 +5,9 @@
  */
 package supermarketpos;
 
+import supermarketpos.controllers.MenuController;
+import supermarketpos.views.MenuView;
+
 /**
  *
  * @author Anthony
@@ -16,6 +19,9 @@ public class SupermarketPOS {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        MenuView menuView = new MenuView();
+        MenuController menuController = new MenuController(menuView);
+        menuController.control();
     }
     
 }

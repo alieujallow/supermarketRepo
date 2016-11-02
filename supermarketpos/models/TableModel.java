@@ -5,6 +5,7 @@
  */
 package supermarketpos.models;
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -14,12 +15,27 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableModel extends AbstractTableModel{
     
+    Database db;
+    String[] columnNames;
     static Object[][] data;
     static TableModel theModel = null;
+    ArrayList<String[]> rows;
     
-    String[] columnNames =  new String [] {
-                "Product Name", "Price", "Quantity"
-            };
+    public TableModel(){
+        db = Database.getInstance();
+        db.connectToDataBase();
+        columnNames =  db.getColumnHeaders();
+        rows = db.fetchDataFromDatabase();
+        db.closeDatabaseConnecttion();
+        convertTo2DArray();    
+    }
+    
+    public void convertTo2DArray(){
+        data = new Object[rows.size()][4];
+        for(int i = 0; i < rows.size(); i++){
+            data[i] = rows.get(i);
+        }
+    }
     
     /**
      * Allows the user to access the data array outside this class.

@@ -1,3 +1,11 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package supermarketpos.models;
+
 /**
  *
  * @author Alieu
@@ -6,6 +14,7 @@
 //import com.mysql.jdbc.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
@@ -187,11 +196,40 @@ public class Database
     }
     
     
+    public void updateProduct(String productName, double price, int quantity, int productid){
+        try{ 
+            PreparedStatement ps = conn.prepareStatement("UPDATE records SET productName=?, price=?,"
+                    + "quantity=? WHERE productID="+"'"+productid+"'");
+            
+            ps.setString(2, productName);
+            ps.setDouble(3, price);
+            ps.setInt(4, quantity);
+            
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    } 
     
-  public static void main(String[]args)
-  {
-    Database db = new Database();
-    db.connectToDatabase();
-    db.addProductTodatabase("donsimon",3.9,9);
-  }
+    
+    public boolean validateEmployee(String username, String password){
+        boolean isValid = false;
+        try{
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM "
+                              + "employees WHERE userName="+"'"+username+"'");
+            
+            if(resultSet != null){
+                if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
+                            resultSet.getString(5).equalsIgnoreCase(password)){
+                    isValid = true;
+                } 
+            }
+        }
+        catch(Exception ex){
+            System.err.println(ex.getMessage());
+        }
+        
+        return isValid;
+    }
 }
