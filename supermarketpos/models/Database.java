@@ -57,7 +57,7 @@ public class Database
         + "  employeeID Int UNIQUE NOT NULL AUTO_INCREMENT,\n"
         + "  name char(100),\n"
         + "  role char(100),\n"
-        + "  userName char(100),\n"
+        + "  userName char(100) UNIQUE,\n"
         + "  password char(100),\n"
         + "  primary key (employeeID) \n"
         + ");";

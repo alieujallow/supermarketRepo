@@ -9,9 +9,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Database 
 {
+  
+   private static final Database instance = new Database();
+
+    public static Database getInstance() {
+        return instance;
+    }
+  
+  
      Connection conn = null;
   // connects to the database and create tables
   public void connectToDatabase()
@@ -98,8 +107,6 @@ public class Database
             System.err.println("Could not add to the database");
         }
     }
-  
-  
 
    //deleting from the database
     public void delete(String name)
@@ -125,6 +132,62 @@ public class Database
         }
     }
  
+     //fetching products' information from the database. It returns an arrayList of the products.
+    public ArrayList fetchDataFromDatabase() {
+        ResultSet resultSet;
+        ArrayList<String[]> rows = new ArrayList<>();
+        try {
+             Statement statement = conn.createStatement();
+             resultSet = statement.executeQuery("SELECT * FROM products");
+            while (resultSet.next()) {
+                String[] tmp = new String[4];
+                tmp[0] = resultSet.getString(1);
+                tmp[1] = resultSet.getString(2);
+                tmp[2] = resultSet.getString(3);
+                tmp[3] = resultSet.getString(4);
+                rows.add(tmp);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.err.println("Could not fetch.............");
+        }
+        return rows;
+    }
+    
+    // closes the database connection
+    public void closeDatabaseConnection() {
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+    
+    
+    //returns the column headers in an array
+     public String[] getColumnHeaders() {
+        String[] columnNames = null;
+        ResultSet  resultSet;
+        try {
+            Statement statement = conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM products");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            columnNames = new String[numberOfColumns];
+
+            for (int i = 1; i <= numberOfColumns; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+            }
+        } catch (Exception ex) {
+
+        }
+        return columnNames;
+    }
+    
+    
+    
   public static void main(String[]args)
   {
     Database db = new Database();
