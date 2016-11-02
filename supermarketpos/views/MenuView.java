@@ -5,6 +5,8 @@
  */
 package supermarketpos.views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Anthony
@@ -27,21 +29,53 @@ public class MenuView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addProductBtn = new javax.swing.JButton();
+        viewProductsBtn = new javax.swing.JButton();
+        makeTransactionBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        addProductBtn.setText("Add new Product");
+        addProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProductBtnActionPerformed(evt);
+            }
+        });
+
+        viewProductsBtn.setText("View all products");
+
+        makeTransactionBtn.setText("Make transaction");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(makeTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(157, 157, 157)
+                .addComponent(addProductBtn)
+                .addGap(74, 74, 74)
+                .addComponent(viewProductsBtn)
+                .addGap(67, 67, 67)
+                .addComponent(makeTransactionBtn)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addProductBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,7 +111,22 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JButton getAddProductBtn(){
+        return addProductBtn;
+    }
+    
+    public JButton getMakeTransactionBtn(){
+        return makeTransactionBtn;
+    }
+    
+    public JButton getViewProductBtn(){
+        return viewProductsBtn;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addProductBtn;
+    private javax.swing.JButton makeTransactionBtn;
+    private javax.swing.JButton viewProductsBtn;
     // End of variables declaration//GEN-END:variables
 }
