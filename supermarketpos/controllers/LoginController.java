@@ -33,9 +33,9 @@ public class LoginController implements ActionListener
       }
       else if(e.getActionCommand().equalsIgnoreCase("login"))
       {
-          String employeeID =loginView.getEmployeeIDTextField().getText();
+          String userName =loginView.getEmployeeIDTextField().getText();
           String password = loginView.getPasswordTextField().getText();
-          if(Database.getInstance.validateEmployee(employeeID,password))
+          if(Database.getInstance.validateEmployee(userName,password))
           {
               MenuView menuView = new MenuView();
               MenuController  menuController = new MenuController(menuView);
