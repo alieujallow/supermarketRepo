@@ -27,17 +27,34 @@ public class SummaryView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cancelButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        cancelButton.setText("Cancel");
+
+        checkOutButton.setText("CheckOut");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(cancelButton)
+                .addGap(61, 61, 61)
+                .addComponent(checkOutButton)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(199, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(checkOutButton))
+                .addGap(78, 78, 78))
         );
 
         pack();
@@ -78,6 +95,17 @@ public class SummaryView extends javax.swing.JFrame {
         });
     }
 
+    public javax.swing.JButton getCancelButton()
+    {
+        return cancelButton;
+    }
+    
+    public javax.swing.JButton getCheckOutButton()
+    {
+        return checkOutButton;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton checkOutButton;
     // End of variables declaration//GEN-END:variables
 }

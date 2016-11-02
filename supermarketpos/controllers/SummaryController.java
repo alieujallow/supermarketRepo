@@ -5,10 +5,34 @@
  */
 package supermarketpos.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Anthony
  */
-public class SummaryController {
+public class SummaryController implements ActionListener
+{
+    SummaryView summaryView;
+    public SummaryController(SummaryView sv)
+    {
+        summaryView=sv;
+        summaryView.getCancelButton().addActionListener(this);
+        summaryView.getCheckOutButton().addActionListener(this);
+        summaryView.getCancelButton().setActionCommand("cancel");
+        summaryView.getCheckOutButton().setActionCommand("checkout");
+    }
     
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getActionCommand().equalsIgnoreCase("cancel"))
+        {
+            summaryView.setVisible(false);
+        }
+        else if(e.getActionCommand().equalsIgnoreCase("checkout"))
+        {
+            
+        }
+    }
 }

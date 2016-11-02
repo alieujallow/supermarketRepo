@@ -5,10 +5,47 @@
  */
 package supermarketpos.controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Anthony
  */
-public class LoginController {
+public class LoginController implements ActionListener 
+{
     
+  LoginView loginView;
+  public LoginController(LoginView lv)
+  {
+    loginView = lv;
+    loginView.getCancelButton().addAtionListener(this);
+    loginView.getLoginButton().addAtionListener(this);
+    loginView.getCancelButton().setActionCommand("cancel");
+    loginView.getLoginButton().setActionCommand("login");
+  }
+  
+  public void actionPerformed(ActionEvent e)
+  {
+      if(e.getActionCommand().equalsIgnoreCase("cancel"))
+      {
+          System.exit(0);
+      }
+      else if(e.getActionCommand().equalsIgnoreCase("login"))
+      {
+          String userName =loginView.getEmployeeIDTextField().getText();
+          String password = loginView.getPasswordTextField().getText();
+          if(Database.getInstance.validateEmployee(userName,password))
+          {
+              MenuView menuView = new MenuView();
+              MenuController  menuController = new MenuController(menuView);
+              loginView.setVisible(false);
+          }
+          else
+          {
+              System.out.println("You have entered a wrong passoword or employeeID");
+          }  
+      }
+  }
+  
 }
