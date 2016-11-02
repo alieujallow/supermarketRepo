@@ -23,9 +23,11 @@ import java.util.ArrayList;
 public class Database 
 {
   
-   private static final Database instance = new Database();
+   private static Database instance;
 
     public static Database getInstance() {
+        if(instance == null)
+            instance = new Database();
         return instance;
     }
   
@@ -39,7 +41,7 @@ public class Database
     
     //  Database credentials
     final String USER = "root";
-    final String PASSWORD = "";
+    final String PASSWORD = "kontihene12";
     Statement statement;
     try {
       //Register JDBC driver
@@ -212,7 +214,7 @@ public class Database
     } 
     
     
-    public boolean validateEmployee(String username, String password){
+    public boolean validateEmployee(String username, char [] password){
         boolean isValid = false;
         try{
             Statement statement = conn.createStatement();
@@ -221,7 +223,7 @@ public class Database
             
             if(resultSet != null){
                 if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
-                            resultSet.getString(5).equalsIgnoreCase(password)){
+                            resultSet.getString(5).equalsIgnoreCase(String.valueOf(password))){
                     isValid = true;
                 } 
             }

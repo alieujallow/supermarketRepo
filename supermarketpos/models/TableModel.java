@@ -19,14 +19,14 @@ public class TableModel extends AbstractTableModel{
     String[] columnNames;
     static Object[][] data;
     static TableModel theModel = null;
-    ArrayList<String[]> rows;
+    static ArrayList<String[]> rows;
     
     public TableModel(){
         db = Database.getInstance();
-        db.connectToDataBase();
+        db.connectToDatabase();
         columnNames =  db.getColumnHeaders();
         rows = db.fetchDataFromDatabase();
-        db.closeDatabaseConnecttion();
+        db.closeDatabaseConnection();
         convertTo2DArray();    
     }
     
@@ -42,8 +42,8 @@ public class TableModel extends AbstractTableModel{
      * 
      * @return data a static instance of the data array.
      */
-    public static Object getArray(){
-        return data;
+    public static ArrayList<String[]> getArray(){
+        return rows;
     }
     
     /**
@@ -97,6 +97,10 @@ public class TableModel extends AbstractTableModel{
     
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
+    }
+    
+    public String getColumnName(int column){
+        return columnNames[column];
     }
     
 }

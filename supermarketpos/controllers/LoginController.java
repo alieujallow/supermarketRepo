@@ -7,6 +7,9 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import supermarketpos.models.Database;
+import supermarketpos.views.LoginView;
+import supermarketpos.views.MenuView;
 
 /**
  *
@@ -19,8 +22,8 @@ public class LoginController implements ActionListener
   public LoginController(LoginView lv)
   {
     loginView = lv;
-    loginView.getCancelButton().addAtionListener(this);
-    loginView.getLoginButton().addAtionListener(this);
+    loginView.getCancelButton().addActionListener(this);
+    loginView.getLoginButton().addActionListener(this);
     loginView.getCancelButton().setActionCommand("cancel");
     loginView.getLoginButton().setActionCommand("login");
   }
@@ -34,8 +37,8 @@ public class LoginController implements ActionListener
       else if(e.getActionCommand().equalsIgnoreCase("login"))
       {
           String userName =loginView.getEmployeeIDTextField().getText();
-          String password = loginView.getPasswordTextField().getText();
-          if(Database.getInstance.validateEmployee(userName,password))
+          char[] password = loginView.getPasswordTextField().getPassword();
+          if(Database.getInstance().validateEmployee(userName, password))
           {
               MenuView menuView = new MenuView();
               MenuController  menuController = new MenuController(menuView);

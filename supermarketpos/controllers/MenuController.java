@@ -37,8 +37,9 @@ public class MenuController implements ActionListener{
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == view.getAddProductBtn()){
             AddProductView productView = new AddProductView();
-            Database db = new Database();
-            AddProductController productController = new AddProductController(productView, db);
+            Database db = Database.getInstance();
+            TableModel model = TableModel.getInstance();
+            AddProductController productController = new AddProductController(productView, db, model);
             productController.control();
         }
         else if(e.getSource() == view.getMakeTransactionBtn()){
@@ -48,7 +49,7 @@ public class MenuController implements ActionListener{
         }
         else if(e.getSource() == view.getViewProductBtn()){
             AllProductsView productsView = new AllProductsView();
-            TableModel model = TableModel.getInstance();
+            TableModel model = new TableModel();
             AllProductsController productsController = new AllProductsController(productsView, model);
             productsController.control();
         }
