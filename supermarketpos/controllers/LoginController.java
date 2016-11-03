@@ -7,6 +7,7 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import supermarketpos.models.Database;
 import supermarketpos.views.LoginView;
 import supermarketpos.views.MenuView;
@@ -26,6 +27,8 @@ public class LoginController implements ActionListener
     loginView.getLoginButton().addActionListener(this);
     loginView.getCancelButton().setActionCommand("cancel");
     loginView.getLoginButton().setActionCommand("login");
+    loginView.setVisible(true);
+    loginView.pack();
   }
   
   public void actionPerformed(ActionEvent e)
@@ -38,16 +41,33 @@ public class LoginController implements ActionListener
       {
           String userName =loginView.getEmployeeIDTextField().getText();
           char[] password = loginView.getPasswordTextField().getPassword();
-          if(Database.getInstance().validateEmployee(userName, password))
+          String pass = String.valueOf(password);
+
+          if(!userName.equals("") && !pass.equals(""))
           {
-              MenuView menuView = new MenuView();
-              MenuController  menuController = new MenuController(menuView);
-              loginView.setVisible(false);
-          }
+            Database.getInstance().connectToDatabase();
+            if(Database.getInstance().validateEmployee(userName,pass))
+            {
+                MenuView menuView = new MenuView();
+                MenuController  menuController = new MenuController(menuView,userName);
+                menuController.control();
+                Database.getInstance().closeDatabaseConnection();
+                loginView.setVisible(false);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(loginView,"You have entered a wrong passoword or employeeID",
+                                              "Error Message " ,JOptionPane.ERROR_MESSAGE);
+               loginView.getEmployeeIDTextField().setText("");
+               loginView.getPasswordTextField().setText("");
+               Database.getInstance().closeDatabaseConnection();
+            }
+         }
           else
           {
-              System.out.println("You have entered a wrong passoword or employeeID");
-          }  
+              JOptionPane.showMessageDialog(loginView,"You should enter both your username and password",
+                                            "Error Message " ,JOptionPane.ERROR_MESSAGE);
+          } 
       }
   }
   

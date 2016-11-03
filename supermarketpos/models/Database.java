@@ -212,14 +212,16 @@ public class Database
     } 
     
     
-    public boolean validateEmployee(String username, char [] password){
+
+    public boolean validateEmployee(String username,String password){
+
         boolean isValid = false;
         try{
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM "
-                              + "employees WHERE userName="+"'"+username+"'");
-            
-            if(resultSet != null){
+             String query = "SELECT * FROM employees WHERE userName=?";
+             java.sql.PreparedStatement preparedStatement = conn.prepareStatement(query);
+             preparedStatement.setString(1, username);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             while(resultSet.next()){
                 if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
                             resultSet.getString(5).equalsIgnoreCase(String.valueOf(password))){
                     isValid = true;
