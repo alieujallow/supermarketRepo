@@ -68,7 +68,7 @@ public class TableModel extends AbstractTableModel{
     }
     
     /**
-     * A methods that returns an int representing the number of columns in the data.
+     * A methods that returns an integer representing the number of columns in the data.
      * 
      * @return columnNames.length the number of columns in the data array.
      */
@@ -77,7 +77,7 @@ public class TableModel extends AbstractTableModel{
     }
     
     /**
-     * A methods that returns an int representing the number of rows in the data.
+     * A methods that returns an integer representing the number of rows in the data.
      * 
      * @return data.length the number of items in the data array.
      */

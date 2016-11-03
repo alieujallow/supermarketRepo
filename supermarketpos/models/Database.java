@@ -23,11 +23,9 @@ import java.util.ArrayList;
 public class Database 
 {
   
-   private static Database instance;
+   private static Database instance = new Database();
 
-    public static Database getInstance() {
-        if(instance == null)
-            instance = new Database();
+    public static Database getInstance() {    
         return instance;
     }
   
