@@ -42,7 +42,7 @@ public class TableModel extends AbstractTableModel{
      * 
      * @return data a static instance of the data array.
      */
-    public static ArrayList<String[]> getArray(){
+    public static ArrayList getArray(){
         return rows;
     }
     
@@ -102,5 +102,6 @@ public class TableModel extends AbstractTableModel{
     public String getColumnName(int column){
         return columnNames[column];
     }
+    
     
 }
