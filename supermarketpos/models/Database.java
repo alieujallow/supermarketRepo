@@ -198,16 +198,17 @@ public class Database
     
     public void updateProduct(String productName, double price, int quantity, int productid){
         try{ 
-            PreparedStatement ps = conn.prepareStatement("UPDATE records SET productName=?, price=?,"
+            PreparedStatement ps = conn.prepareStatement("UPDATE products SET productName=?, price=?,"
                     + "quantity=? WHERE productID="+"'"+productid+"'");
             
-            ps.setString(2, productName);
-            ps.setDouble(3, price);
-            ps.setInt(4, quantity);
-            
+            ps.setString(1, productName);
+            ps.setDouble(2, price);
+            ps.setInt(3, quantity);
+            ps.executeUpdate(); 
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.out.println("could not update");
         }
     } 
     

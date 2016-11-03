@@ -19,10 +19,12 @@ public class EditProductController implements ActionListener
 {
     EditProductView editProductView;
     Product product;
-    public EditProductController(EditProductView epv,Product pr)
+    int productID;
+    public EditProductController(EditProductView epv,Product pr,int id)
     {
         editProductView=epv;
         product=pr;
+        productID=id;
         
         editProductView.getNameTextField().setText(product.getProductName());
         editProductView.getQuantityTextField().setText(product.getQuantity().toString());
@@ -49,7 +51,9 @@ public class EditProductController implements ActionListener
             String productName= editProductView.getNameTextField().getText();
             int quantity = Integer.parseInt(editProductView.getQuantityTextField().getText());
             double price = Double.parseDouble(editProductView.getPriceTextField().getText());
-            //Database.getInstance().updateProduct(productName,price,quantity,productID);
+            Database.getInstance().connectToDatabase();
+            Database.getInstance().updateProduct(productName,price,quantity,productID);
+            Database.getInstance().closeDatabaseConnection();
             editProductView.setVisible(false);
         }
     }
