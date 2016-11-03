@@ -7,6 +7,8 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import supermarketpos.models.Database;
+import supermarketpos.views.EditProductView;
 
 /**
  *
@@ -23,7 +25,7 @@ public class EditProductController implements ActionListener
         editProductView.getCancelButton().addActionListener(this);
         editProductView.getSaveButton().addActionListener(this);
         editProductView.getCancelButton().setActionCommand("cancel");
-        editProductView.getsaveButton().setActionCommand("save");      
+        editProductView.getSaveButton().setActionCommand("save");      
     }
     
     public void actionPerformed(ActionEvent e)

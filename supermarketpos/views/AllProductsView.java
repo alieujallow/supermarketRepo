@@ -47,14 +47,6 @@ public class AllProductsView extends javax.swing.JFrame {
             }
         });
 
-        productsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPane1.setViewportView(productsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
