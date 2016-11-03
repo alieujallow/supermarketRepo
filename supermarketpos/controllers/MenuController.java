@@ -11,6 +11,7 @@ import supermarketpos.models.Database;
 import supermarketpos.models.TableModel;
 import supermarketpos.views.AddProductView;
 import supermarketpos.views.AllProductsView;
+import supermarketpos.views.LoginView;
 import supermarketpos.views.MenuView;
 import supermarketpos.views.TransactionView;
 
@@ -21,24 +22,27 @@ import supermarketpos.views.TransactionView;
 public class MenuController implements ActionListener{
     
     MenuView view = null;
-    
-    public MenuController(MenuView view){
+    String username = "Welcome ";
+    public MenuController(MenuView view,String name){
         this.view = view;
+        username+=name;
     }
     
     public void control(){
         view.getAddProductBtn().addActionListener(this);
         view.getViewProductBtn().addActionListener(this);
         view.getMakeTransactionBtn().addActionListener(this);
-        
+        view.getLogoutBtn().addActionListener(this);
+        view.getUsernameLabel().setText(username);
         view.setVisible(true);
     }
     
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == view.getAddProductBtn()){
             AddProductView productView = new AddProductView();
-            Database db = new Database();
-            AddProductController productController = new AddProductController(productView, db);
+            Database db = Database.getInstance();
+            TableModel model = TableModel.getInstance();
+            AddProductController productController = new AddProductController(productView, db, model);
             productController.control();
         }
         else if(e.getSource() == view.getMakeTransactionBtn()){
@@ -48,9 +52,14 @@ public class MenuController implements ActionListener{
         }
         else if(e.getSource() == view.getViewProductBtn()){
             AllProductsView productsView = new AllProductsView();
-            TableModel model = TableModel.getInstance();
+            TableModel model = new TableModel();
             AllProductsController productsController = new AllProductsController(productsView, model);
             productsController.control();
+        }
+        else if(e.getSource() == view.getLogoutBtn()){
+          LoginView  loginView = new LoginView();
+          LoginController  loginController = new LoginController (loginView);
+          view.dispose();
         }
     }  
 }

@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class Database 
 {
   
-   private static final Database instance = new Database();
+   private static Database instance = new Database();
 
-    public static Database getInstance() {
+    public static Database getInstance() {    
         return instance;
     }
   
@@ -212,14 +212,14 @@ public class Database
     } 
     
     
-    public boolean validateEmployee(String username, String password){
+    public boolean validateEmployee(String username,String password){
         boolean isValid = false;
         try{
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM "
-                              + "employees WHERE userName="+"'"+username+"'");
-            
-            if(resultSet != null){
+             String query = "SELECT * FROM employees WHERE userName=?";
+             java.sql.PreparedStatement preparedStatement = conn.prepareStatement(query);
+             preparedStatement.setString(1, username);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             while(resultSet.next()){
                 if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
                             resultSet.getString(5).equalsIgnoreCase(password)){
                     isValid = true;

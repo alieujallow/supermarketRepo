@@ -32,6 +32,8 @@ public class MenuView extends javax.swing.JFrame {
         addProductBtn = new javax.swing.JButton();
         viewProductsBtn = new javax.swing.JButton();
         makeTransactionBtn = new javax.swing.JButton();
+        usernameLabel = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,28 +48,42 @@ public class MenuView extends javax.swing.JFrame {
 
         makeTransactionBtn.setText("Make transaction");
 
+        logoutButton.setText("logout");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(247, 247, 247)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(makeTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(265, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(makeTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(logoutButton)))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+                .addGap(28, 28, 28)
+                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
                 .addComponent(addProductBtn)
-                .addGap(74, 74, 74)
+                .addGap(41, 41, 41)
                 .addComponent(viewProductsBtn)
-                .addGap(67, 67, 67)
+                .addGap(49, 49, 49)
                 .addComponent(makeTransactionBtn)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(logoutButton)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,10 +139,21 @@ public class MenuView extends javax.swing.JFrame {
     public JButton getViewProductBtn(){
         return viewProductsBtn;
     }
+    
+    public JButton getLogoutBtn(){
+        return logoutButton;
+    }
+    
+    public javax.swing.JLabel getUsernameLabel()
+    {
+        return usernameLabel;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProductBtn;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton makeTransactionBtn;
+    private javax.swing.JLabel usernameLabel;
     private javax.swing.JButton viewProductsBtn;
     // End of variables declaration//GEN-END:variables
 }
