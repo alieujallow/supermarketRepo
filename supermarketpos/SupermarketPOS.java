@@ -5,8 +5,8 @@
  */
 package supermarketpos;
 
-import supermarketpos.controllers.MenuController;
-import supermarketpos.views.MenuView;
+import supermarketpos.controllers.LoginController;
+import supermarketpos.views.LoginView;
 
 /**
  *
@@ -18,10 +18,9 @@ public class SupermarketPOS {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        MenuView menuView = new MenuView();
-        MenuController menuController = new MenuController(menuView);
-        menuController.control();
+        LoginView  loginView = new LoginView();
+        LoginController  loginController = new LoginController (loginView);
+        
     }
     
 }

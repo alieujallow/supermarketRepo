@@ -22,12 +22,9 @@ import java.util.ArrayList;
 
 public class Database 
 {
-  
-   private static Database instance;
+   private static Database instance = new Database();
 
-    public static Database getInstance() {
-        if(instance == null)
-            instance = new Database();
+    public static Database getInstance() {    
         return instance;
     }
   
@@ -200,28 +197,28 @@ public class Database
     
     public void updateProduct(String productName, double price, int quantity, int productid){
         try{ 
-            PreparedStatement ps = conn.prepareStatement("UPDATE records SET productName=?, price=?,"
+            PreparedStatement ps = conn.prepareStatement("UPDATE products SET productName=?, price=?,"
                     + "quantity=? WHERE productID="+"'"+productid+"'");
-            
-            ps.setString(2, productName);
-            ps.setDouble(3, price);
-            ps.setInt(4, quantity);
-            
+            ps.setString(1, productName);
+            ps.setDouble(2, price);
+            ps.setInt(3, quantity);
+            ps.executeUpdate(); 
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
+            System.out.println("could not update");
         }
     } 
     
-    
-    public boolean validateEmployee(String username, char [] password){
+
+    public boolean validateEmployee(String username,String password){
         boolean isValid = false;
         try{
-            Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM "
-                              + "employees WHERE userName="+"'"+username+"'");
-            
-            if(resultSet != null){
+             String query = "SELECT * FROM employees WHERE userName=?";
+             java.sql.PreparedStatement preparedStatement = conn.prepareStatement(query);
+             preparedStatement.setString(1, username);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             while(resultSet.next()){
                 if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
                             resultSet.getString(5).equalsIgnoreCase(String.valueOf(password))){
                     isValid = true;
@@ -231,7 +228,6 @@ public class Database
         catch(Exception ex){
             System.err.println(ex.getMessage());
         }
-        
         return isValid;
     }
 }
