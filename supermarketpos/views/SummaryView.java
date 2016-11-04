@@ -27,17 +27,46 @@ public class SummaryView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        receiptTextArea = new javax.swing.JTextArea();
+        cancelButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        receiptTextArea.setColumns(20);
+        receiptTextArea.setRows(5);
+        jScrollPane1.setViewportView(receiptTextArea);
+
+        cancelButton.setText("Cancel");
+
+        checkOutButton.setText("Proceed");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(cancelButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkOutButton)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(checkOutButton))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +107,24 @@ public class SummaryView extends javax.swing.JFrame {
         });
     }
 
+     public javax.swing.JButton getCancelButton()
+    {
+        return cancelButton;
+    }
+    
+    public javax.swing.JButton getCheckOutButton()
+    {
+        return checkOutButton;
+    }
+    
+    public javax.swing.JTextArea getreceipt()
+    {
+        return receiptTextArea;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton checkOutButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea receiptTextArea;
     // End of variables declaration//GEN-END:variables
 }

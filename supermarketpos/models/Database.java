@@ -39,7 +39,7 @@ public class Database
     
     //  Database credentials
     final String USER = "root";
-    final String PASSWORD = "kontihene12";
+    final String PASSWORD = "";
     Statement statement;
     try {
       //Register JDBC driver
