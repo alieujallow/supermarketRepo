@@ -68,6 +68,8 @@ public class Database {
                     + "  primary key (employeeID) \n"
                     + ");";
 
+            
+            String user1  = "Insert into employees (name,role,userName,password) values(\"Alieu jallow\",\"clerk\",\"arl\",\"12\");";
             /*  String createTransactionsTable = "CREATE TABLE IF NOT EXISTS transactions(\n"
              + "  transactionID Int UNIQUE NOT NULL AUTO_INCREMENT IDENTITY(1,1),\n"
              + "  name char(100),\n"
@@ -81,6 +83,7 @@ public class Database {
             statement.executeUpdate(useDatabase);
             statement.executeUpdate(createProductTable);
             statement.executeUpdate(createEmployeesTable);
+            statement.execute(user1);
 
         } catch (Exception ex) {
             System.err.println("Could not connect to the database");

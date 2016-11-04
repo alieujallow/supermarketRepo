@@ -30,19 +30,24 @@ public class AllProductsController implements ActionListener {
         this.view = view;
         this.model = model;
         this.db = db;
-
         view.getTable().setModel(model);
+        view.getEditProductBtn().addActionListener(this);
+        view.getDeleteProductBtn().addActionListener(this);
+        view.setTitle("All Products");
+        view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
+        view.setVisible(true);
+        view.pack();
     }
 
     //controll method
     public void control() {
-        view.getEditProductBtn().addActionListener(this);
+        /*view.getEditProductBtn().addActionListener(this);
         view.getDeleteProductBtn().addActionListener(this);
 
         view.setTitle("All Products");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
-        view.pack();
+        view.pack();*/
     }
 
     // action peformed metho
@@ -59,7 +64,7 @@ public class AllProductsController implements ActionListener {
                 Product product = new Product(productName, price, quantity);
                 EditProductView editProductView = new EditProductView();
                 TableModel model = new TableModel();
-                EditProductController EditProductController = new EditProductController(editProductView, product, productID, model, row);
+                EditProductController EditProductController = new EditProductController(editProductView, product, productID, model, row,view);
             }
         } else if (e.getSource() == view.getDeleteProductBtn()) {
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", null, JOptionPane.YES_NO_OPTION);
