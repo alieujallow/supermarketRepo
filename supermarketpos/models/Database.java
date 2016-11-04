@@ -130,7 +130,7 @@ public class Database
                     String deleteProduct = "DELETE FROM products WHERE productName= ?";
                     java.sql.PreparedStatement preparedStatement = conn.prepareStatement(deleteProduct);
                     preparedStatement.setString(1, name);
-                    preparedStatement.execute();
+                    preparedStatement.executeUpdate();
                     break;
                 }
             }
@@ -209,7 +209,6 @@ public class Database
             System.out.println("could not update");
         }
     } 
-    
 
     public boolean validateEmployee(String username,String password){
         boolean isValid = false;

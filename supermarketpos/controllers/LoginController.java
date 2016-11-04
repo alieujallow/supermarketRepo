@@ -44,12 +44,11 @@ public class LoginController implements ActionListener
           char[] password = loginView.getPasswordTextField().getPassword();
 
           String pass = String.valueOf(password);
-          
+
           if(!userName.equals("") && !pass.equals(""))
           {
             Database.getInstance().connectToDatabase();
             if(Database.getInstance().validateEmployee(userName,pass))
-
             {
                 MenuView menuView = new MenuView();
                 MenuController  menuController = new MenuController(menuView,userName);
