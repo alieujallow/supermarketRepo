@@ -70,19 +70,23 @@ public class Database {
 
             
             String user1  = "Insert into employees (name,role,userName,password) values(\"Alieu jallow\",\"clerk\",\"arl\",\"12\");";
-            /*  String createTransactionsTable = "CREATE TABLE IF NOT EXISTS transactions(\n"
-             + "  transactionID Int UNIQUE NOT NULL AUTO_INCREMENT IDENTITY(1,1),\n"
-             + "  name char(100),\n"
+            
+            String createTransactionsTable = "CREATE TABLE IF NOT EXISTS transactions(\n"
+             + "  transactionID Int UNIQUE NOT NULL AUTO_INCREMENT,\n"
+             + "  productId Int,\n"    
+             + "  productName char(100),\n"
              + "  role char(100),\n"
              + "  userName char(100),\n"
-             + "  password char(100),\n"
-             + "  primary key (employeeID) \n"
-             + ");";*/
+             + "  date Date,\n"
+             + "  primary key (transactionID), \n"
+             + "  foreign key (productId) references  products(productID)\n"
+             + ");";
             //Execute a query
             statement.executeUpdate(createDatabase);
             statement.executeUpdate(useDatabase);
             statement.executeUpdate(createProductTable);
             statement.executeUpdate(createEmployeesTable);
+            statement.executeUpdate(createTransactionsTable);
             statement.execute(user1);
 
         } catch (Exception ex) {
@@ -198,6 +202,27 @@ public class Database {
         }
     }
 
+   //insert intto transactions table
+    public void insertTransaction(int proID,String proN,String rol,String usN,String date)
+    {
+        try {
+            String query = " insert into transactions ( productId,productName,role,userName,date)"
+                    + " values (?, ?, ?, ?, ?)";
+            java.sql.PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, proID);
+            preparedStatement.setString(2, proN);
+            preparedStatement.setString(3, rol);
+            preparedStatement.setString(4, usN);
+            preparedStatement.setString(5, date);
+            
+            preparedStatement.execute();
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.err.println("Could not add to the database");
+        }  
+    }
+    
+    
     // validates employess credentials
     public boolean validateEmployee(String username, String password) {
 

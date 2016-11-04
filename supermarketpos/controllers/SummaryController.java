@@ -7,7 +7,11 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import static java.time.Instant.now;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import supermarketpos.models.Database;
 import supermarketpos.views.SummaryView;
@@ -35,9 +39,18 @@ public class SummaryController implements ActionListener {
         Database.getInstance().connectToDatabase();
         ArrayList rows = Database.getInstance().fetchDataFromDatabase();
         Database.getInstance().closeDatabaseConnection();
-
+        
+        //date
+        Date date = new Date();
+        
+        // display time and date 
+        SimpleDateFormat dateFormatter;
+        dateFormatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        
         //prints the receipt
         int totalQuantity = 0;
+        summaryView.getreceipt().append("\t                Aballow Super Market\n");
+        summaryView.getreceipt().append("\t Date:  "+ dateFormatter.format(date)+"\n");
         summaryView.getreceipt().append("\t************************************************\n");
         summaryView.getreceipt().append("\tPRODUCT\tQUANTITY\tPRICE \n");
         summaryView.getreceipt().append("\t************************************************\n");

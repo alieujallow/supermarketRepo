@@ -29,8 +29,8 @@ public class EditProductController implements ActionListener {
     AllProductsView allproductsView;
 
     //constructor
-    public EditProductController(EditProductView epv, Product pr, int id, TableModel model, int row, AllProductsView allproductsV) {
-        allproductsView = allproductsV;
+    public EditProductController(EditProductView epv, Product pr, int id, int row,TableModel model) {
+        //allproductsView = allproductsV;
         editProductView = epv;
         product = pr;
         productID = id;
@@ -77,11 +77,11 @@ public class EditProductController implements ActionListener {
                         Database.getInstance().closeDatabaseConnection();
                         
                         
-                        TableModel model = new TableModel();
+                       /* TableModel model = new TableModel();
                         AllProductsView  allProductsView  = new AllProductsView();
                         AllProductsController allProductsController = new AllProductsController(allProductsView,model,Database.getInstance());
                         
-                         allproductsView.dispose();
+                         allproductsView.dispose();*/
                       
                         model.fireTableRowsUpdated(row, row);
                         editProductView.dispose();

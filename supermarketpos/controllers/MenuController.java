@@ -51,7 +51,7 @@ public class MenuController implements ActionListener {
             transactionController.control();
         } else if (e.getSource() == view.getViewProductBtn()) {
             AllProductsView productsView = new AllProductsView();
-            TableModel model = new TableModel();
+            TableModel model = TableModel.getInstance();
             Database db = new Database();
             AllProductsController productsController = new AllProductsController(productsView, model, db);
             productsController.control();

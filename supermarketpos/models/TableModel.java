@@ -110,4 +110,10 @@ public class TableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return columnNames[column];
     }
+    
+    public void setValueAt(Object value, int row,int col)
+    {
+        data[row][col]=value;
+        fireTableCellUpdated(row,col);
+    }
 }
