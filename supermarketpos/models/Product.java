@@ -14,8 +14,8 @@ public class Product {
     
     //Instance variables
     private String productName;
-    private double price;
-    private int quantity;
+    private Double price;
+    private Integer quantity;
     
     /**
      * A constructor that initializes the values of the instance variables.
@@ -44,7 +44,7 @@ public class Product {
      * 
      * @return price the name of the product as a double.
      */
-    public double getPrice(){
+    public Double getPrice(){
         return price;
     }
     
@@ -53,7 +53,7 @@ public class Product {
      * 
      * @return quantity the name of the product as a int.
      */
-    public int getQuantity(){
+    public Integer getQuantity(){
         return quantity;
     }
     
