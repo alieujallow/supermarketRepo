@@ -148,31 +148,27 @@ public class EditProductView extends javax.swing.JFrame {
         });
     }
 
-    public javax.swing.JTextField getNameTextField()
-    {
+    //getter methods
+    public javax.swing.JTextField getNameTextField() {
         return nameTextField;
     }
-    
-    public javax.swing.JTextField getPriceTextField()
-    {
+
+    public javax.swing.JTextField getPriceTextField() {
         return priceTextField;
     }
-    
-    public javax.swing.JTextField getQuantityTextField()
-    {
+
+    public javax.swing.JTextField getQuantityTextField() {
         return quantityTextField;
     }
-    
-    public javax.swing.JButton getCancelButton()
-    {
+
+    public javax.swing.JButton getCancelButton() {
         return cancelButton;
     }
-    
-    public javax.swing.JButton getSaveButton()
-    {
+
+    public javax.swing.JButton getSaveButton() {
         return saveButton;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;

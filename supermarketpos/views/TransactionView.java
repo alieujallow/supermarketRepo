@@ -138,17 +138,17 @@ public class TransactionView extends javax.swing.JFrame {
             }
         });
     }
-    
-    public JButton getProceedTransactionBtn(){
+
+    //getter methods
+    public JButton getProceedTransactionBtn() {
         return proceedTransactionBtn;
     }
-    
-    public JButton getCancelTransactionBtn(){
+
+    public JButton getCancelTransactionBtn() {
         return cancelTransactionBtn;
     }
-    
-    public JList getProductList()
-    {
+
+    public JList getProductList() {
         return productList;
     }
 
