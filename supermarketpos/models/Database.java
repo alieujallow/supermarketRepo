@@ -200,7 +200,6 @@ public class Database
         try{ 
             PreparedStatement ps = conn.prepareStatement("UPDATE products SET productName=?, price=?,"
                     + "quantity=? WHERE productID="+"'"+productid+"'");
-            
             ps.setString(1, productName);
             ps.setDouble(2, price);
             ps.setInt(3, quantity);
@@ -211,7 +210,6 @@ public class Database
             System.out.println("could not update");
         }
     } 
-    
     
     public boolean validateEmployee(String username,String password){
         boolean isValid = false;
@@ -230,7 +228,6 @@ public class Database
         catch(Exception ex){
             System.err.println(ex.getMessage());
         }
-        
         return isValid;
     }
 }
