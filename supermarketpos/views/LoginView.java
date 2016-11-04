@@ -33,6 +33,7 @@ public class LoginView extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         employeeIDTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,9 +41,14 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabel2.setText("Username");
 
+        cancelButton.setForeground(new java.awt.Color(255, 0, 0));
         cancelButton.setText("Cancel");
 
+        loginButton.setForeground(new java.awt.Color(102, 255, 51));
         loginButton.setText("Login");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel3.setText("LOGIN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,11 +70,17 @@ public class LoginView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,6 +159,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JTextField employeeIDTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordTextField;
     // End of variables declaration//GEN-END:variables

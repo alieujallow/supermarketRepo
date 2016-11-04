@@ -22,7 +22,7 @@ import supermarketpos.views.TransactionView;
 public class MenuController implements ActionListener{
     
     MenuView view = null;
-    String username = "Welcome ";
+    String username = "Welcome  ";
     public MenuController(MenuView view,String name){
         this.view = view;
         username+=name;
