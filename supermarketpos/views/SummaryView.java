@@ -31,6 +31,7 @@ public class SummaryView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         checkOutButton = new javax.swing.JButton();
+<<<<<<< HEAD
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -63,24 +64,41 @@ public class SummaryView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+=======
+        jScrollPane1 = new javax.swing.JScrollPane();
+        receiptTextArea = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+>>>>>>> 8c5c43821d0b8ed582fb1857941764c79ea8df6b
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        cancelButton.setForeground(new java.awt.Color(255, 51, 51));
         cancelButton.setText("Cancel");
 
+        checkOutButton.setForeground(new java.awt.Color(51, 255, 51));
         checkOutButton.setText("CheckOut");
 
+<<<<<<< HEAD
         jLabel1.setText("PRODUCT");
 
         jLabel2.setText("QUANTITY");
 
         jLabel3.setText("PRICE");
+=======
+        receiptTextArea.setColumns(20);
+        receiptTextArea.setRows(5);
+        jScrollPane1.setViewportView(receiptTextArea);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setText("SUMMARY");
+>>>>>>> 8c5c43821d0b8ed582fb1857941764c79ea8df6b
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(90, 90, 90)
                 .addComponent(cancelButton)
                 .addGap(53, 53, 53)
@@ -132,10 +150,28 @@ public class SummaryView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel12)))
                         .addGap(59, 59, 59))))
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(cancelButton)
+                        .addGap(63, 63, 63)
+                        .addComponent(checkOutButton)
+                        .addGap(0, 95, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 8c5c43821d0b8ed582fb1857941764c79ea8df6b
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -176,6 +212,17 @@ public class SummaryView extends javax.swing.JFrame {
                     .addComponent(cancelButton)
                     .addComponent(checkOutButton))
                 .addGap(39, 39, 39))
+=======
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(checkOutButton))
+                .addContainerGap())
+>>>>>>> 8c5c43821d0b8ed582fb1857941764c79ea8df6b
         );
 
         pack();
@@ -225,10 +272,16 @@ public class SummaryView extends javax.swing.JFrame {
     {
         return checkOutButton;
     }
+    
+    public javax.swing.JTextArea getreceipt()
+    {
+        return receiptTextArea;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkOutButton;
     private javax.swing.JLabel jLabel1;
+<<<<<<< HEAD
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -250,5 +303,9 @@ public class SummaryView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+=======
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea receiptTextArea;
+>>>>>>> 8c5c43821d0b8ed582fb1857941764c79ea8df6b
     // End of variables declaration//GEN-END:variables
 }
