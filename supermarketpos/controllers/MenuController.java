@@ -19,16 +19,17 @@ import supermarketpos.views.TransactionView;
  *
  * @author Anthony
  */
-public class MenuController implements ActionListener{
-    
+public class MenuController implements ActionListener {
+
     MenuView view = null;
     String username = "Welcome  ";
-    public MenuController(MenuView view,String name){
+
+    public MenuController(MenuView view, String name) {
         this.view = view;
-        username+=name;
+        username += name;
     }
-    
-    public void control(){
+
+    public void control() {
         view.getAddProductBtn().addActionListener(this);
         view.getViewProductBtn().addActionListener(this);
         view.getMakeTransactionBtn().addActionListener(this);
@@ -36,32 +37,28 @@ public class MenuController implements ActionListener{
         view.getUsernameLabel().setText(username);
         view.setVisible(true);
     }
-    
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == view.getAddProductBtn()){
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == view.getAddProductBtn()) {
             AddProductView productView = new AddProductView();
             Database db = Database.getInstance();
             TableModel model = TableModel.getInstance();
             AddProductController productController = new AddProductController(productView, db, model);
             productController.control();
-        }
-        else if(e.getSource() == view.getMakeTransactionBtn()){
+        } else if (e.getSource() == view.getMakeTransactionBtn()) {
             TransactionView transactionView = new TransactionView();
             TransactionController transactionController = new TransactionController(transactionView);
             transactionController.control();
-        }
-        else if(e.getSource() == view.getViewProductBtn()){
+        } else if (e.getSource() == view.getViewProductBtn()) {
             AllProductsView productsView = new AllProductsView();
             TableModel model = new TableModel();
             Database db = new Database();
             AllProductsController productsController = new AllProductsController(productsView, model, db);
             productsController.control();
+        } else if (e.getSource() == view.getLogoutBtn()) {
+            LoginView loginView = new LoginView();
+            LoginController loginController = new LoginController(loginView);
+            view.dispose();
         }
-        else if(e.getSource() == view.getLogoutBtn()){
-          LoginView  loginView = new LoginView();
-          LoginController  loginController = new LoginController (loginView);
-          view.dispose();
-        }
-    }  
+    }
 }
-

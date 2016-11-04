@@ -8,7 +8,6 @@ package supermarketpos.views;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
-
 /**
  *
  * @author alieu
@@ -129,16 +128,17 @@ public class AllProductsView extends javax.swing.JFrame {
             }
         });
     }
-    
-    public JButton getDeleteProductBtn(){
+
+    //getter methods
+    public JButton getDeleteProductBtn() {
         return deleteProductBtn;
     }
-    
-    public JButton getEditProductBtn(){
+
+    public JButton getEditProductBtn() {
         return editProductBtn;
     }
-    
-    public JTable getTable(){
+
+    public JTable getTable() {
         return productsTable;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

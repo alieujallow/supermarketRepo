@@ -171,24 +171,25 @@ public class AddProductView extends javax.swing.JFrame {
             }
         });
     }
-    
-    public JTextField getPriceJtf(){
+
+    //getter methods
+    public JTextField getPriceJtf() {
         return priceJtf;
     }
-    
-    public JTextField getProductNameJtf(){
+
+    public JTextField getProductNameJtf() {
         return productNameJtf;
     }
-    
-    public JTextField getQuantityJtf(){
+
+    public JTextField getQuantityJtf() {
         return quantityJtf;
     }
-    
-    public JButton getAddProductBtn(){
+
+    public JButton getAddProductBtn() {
         return addProductBtn;
     }
-    
-    public JButton getCancelBtn(){
+
+    public JButton getCancelBtn() {
         return cancelBtn;
     }
 

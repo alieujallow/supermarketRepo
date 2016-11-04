@@ -19,59 +19,63 @@ import supermarketpos.views.TransactionView;
  *
  * @author Anthony
  */
-public class TransactionController implements ActionListener{
-    
+public class TransactionController implements ActionListener {
+
+    //instance variables
     TransactionView view = null;
    // Double[] prices;
-    public TransactionController(TransactionView view){
+
+    //constructor
+    public TransactionController(TransactionView view) {
         this.view = view;
     }
-    
-    public void control()
-    {
+
+    //controll method
+    public void control() {
         view.getCancelTransactionBtn().addActionListener(this);
         view.getProceedTransactionBtn().addActionListener(this);
         Database.getInstance().connectToDatabase();
-        ArrayList rows =Database.getInstance().fetchDataFromDatabase();
+        ArrayList rows = Database.getInstance().fetchDataFromDatabase();
         Database.getInstance().closeDatabaseConnection();
         DefaultListModel listModel;
         listModel = new DefaultListModel();
-        
-        for(int i=0;i<rows.size();i++)
-        {
-            String[] temp = (String[])rows.get(i);
+
+        for (int i = 0; i < rows.size(); i++) {
+            String[] temp = (String[]) rows.get(i);
             listModel.addElement(temp[1]);
         }
-        
+
         view.getProductList().setModel(listModel);
         view.setTitle("Make Transaction");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
-    
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == view.getCancelTransactionBtn()){
+
+    //action performed method
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == view.getCancelTransactionBtn()) {
             view.dispose();
-        }
-        else if(e.getSource() == view.getProceedTransactionBtn())
-        {
+        } else if (e.getSource() == view.getProceedTransactionBtn()) {
             view.getProductList().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
             int[] selectedIx = view.getProductList().getSelectedIndices();
             String[] names = new String[selectedIx.length];
             int[] quantity = new int[selectedIx.length];
-            
-            for(int i =0;i<names.length;i++)
-            {
-                names[i]= (String)view.getProductList().getModel().getElementAt(selectedIx[i]);
-                int qty = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the quantity for "+names[i]));
-                quantity[i]= qty; 
+
+            for (int i = 0; i < names.length; i++) {
+                try {
+                    names[i] = (String) view.getProductList().getModel().getElementAt(selectedIx[i]);
+                    int qty = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the quantity for " + names[i]));
+                    quantity[i] = qty;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(view, "Quantity must be numeric", "Error Message ", JOptionPane.ERROR_MESSAGE);
+                }
             }
-           
+
             SummaryView summaryView = new SummaryView();
-            SummaryController  summaryController = new SummaryController(summaryView, names, quantity);
+            SummaryController summaryController = new SummaryController(summaryView, names, quantity);
 
             view.dispose();
         }
     }
-    
+
 }

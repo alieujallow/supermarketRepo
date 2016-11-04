@@ -133,27 +133,24 @@ public class LoginView extends javax.swing.JFrame {
         });
     }
 
-   public  javax.swing.JButton getCancelButton()
-   {
-       return cancelButton;
-   }
-   
-   public  javax.swing.JButton getLoginButton()
-   {
-       return loginButton;
-   }
-    
-   public javax.swing.JPasswordField getPasswordTextField()
-   {
-       return passwordTextField;
-   }
-   
-   public javax.swing.JTextField getEmployeeIDTextField()
-   {
-       return employeeIDTextField;
-   }
-   
-    
+    //getter methods
+    public javax.swing.JButton getCancelButton() {
+        return cancelButton;
+    }
+
+    public javax.swing.JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public javax.swing.JPasswordField getPasswordTextField() {
+        return passwordTextField;
+    }
+
+    public javax.swing.JTextField getEmployeeIDTextField() {
+        return employeeIDTextField;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField employeeIDTextField;

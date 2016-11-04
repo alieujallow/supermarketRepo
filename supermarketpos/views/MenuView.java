@@ -140,25 +140,25 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
     }
-    
-    public JButton getAddProductBtn(){
+
+    //getter methods
+    public JButton getAddProductBtn() {
         return addProductBtn;
     }
-    
-    public JButton getMakeTransactionBtn(){
+
+    public JButton getMakeTransactionBtn() {
         return makeTransactionBtn;
     }
-    
-    public JButton getViewProductBtn(){
+
+    public JButton getViewProductBtn() {
         return viewProductsBtn;
     }
-    
-    public JButton getLogoutBtn(){
+
+    public JButton getLogoutBtn() {
         return logoutButton;
     }
-    
-    public javax.swing.JLabel getUsernameLabel()
-    {
+
+    public javax.swing.JLabel getUsernameLabel() {
         return usernameLabel;
     }
 
