@@ -11,7 +11,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author Anthony
+ * @author alieu
  */
 public class AllProductsView extends javax.swing.JFrame {
 
@@ -35,11 +35,14 @@ public class AllProductsView extends javax.swing.JFrame {
         editProductBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        deleteProductBtn.setForeground(new java.awt.Color(255, 0, 0));
         deleteProductBtn.setText("DELETE");
 
+        editProductBtn.setForeground(new java.awt.Color(51, 255, 51));
         editProductBtn.setText("EDIT");
         editProductBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,6 +51,9 @@ public class AllProductsView extends javax.swing.JFrame {
         });
 
         jScrollPane1.setViewportView(productsTable);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setText("AVAILABLE PRODUCTS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,13 +69,19 @@ public class AllProductsView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(245, 245, 245)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editProductBtn)
                     .addComponent(deleteProductBtn))
@@ -132,6 +144,7 @@ public class AllProductsView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteProductBtn;
     private javax.swing.JButton editProductBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable productsTable;
     // End of variables declaration//GEN-END:variables
