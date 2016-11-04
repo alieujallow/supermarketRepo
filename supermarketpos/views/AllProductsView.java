@@ -11,7 +11,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author Anthony
+ * @author alieu
  */
 public class AllProductsView extends javax.swing.JFrame {
 
