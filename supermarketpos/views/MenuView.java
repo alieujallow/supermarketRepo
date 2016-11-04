@@ -32,11 +32,13 @@ public class MenuView extends javax.swing.JFrame {
         addProductBtn = new javax.swing.JButton();
         viewProductsBtn = new javax.swing.JButton();
         makeTransactionBtn = new javax.swing.JButton();
-        usernameLabel = new javax.swing.JLabel();
         logoutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        addProductBtn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         addProductBtn.setText("Add new Product");
         addProductBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,11 +46,21 @@ public class MenuView extends javax.swing.JFrame {
             }
         });
 
+        viewProductsBtn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         viewProductsBtn.setText("View all products");
 
+        makeTransactionBtn.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         makeTransactionBtn.setText("Make transaction");
 
+        logoutButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(255, 0, 0));
         logoutButton.setText("logout");
+
+        jLabel1.setBackground(new java.awt.Color(102, 51, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("DASHBOARD");
+
+        usernameLabel.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,33 +69,34 @@ public class MenuView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
+                        .addGap(114, 114, 114)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(makeTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(viewProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addProductBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(logoutButton)))
-                .addContainerGap(257, Short.MAX_VALUE))
+                        .addGap(134, 134, 134)
+                        .addComponent(jLabel1)))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
+                .addContainerGap()
+                .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(addProductBtn)
-                .addGap(41, 41, 41)
+                .addGap(27, 27, 27)
                 .addComponent(viewProductsBtn)
-                .addGap(49, 49, 49)
+                .addGap(28, 28, 28)
                 .addComponent(makeTransactionBtn)
-                .addGap(40, 40, 40)
+                .addGap(27, 27, 27)
                 .addComponent(logoutButton)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -151,6 +164,7 @@ public class MenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProductBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton makeTransactionBtn;
     private javax.swing.JLabel usernameLabel;

@@ -23,7 +23,7 @@ import supermarketpos.views.TransactionView;
 public class TransactionController implements ActionListener{
     
     TransactionView view = null;
-    
+   // Double[] prices;
     public TransactionController(TransactionView view){
         this.view = view;
     }
@@ -35,9 +35,9 @@ public class TransactionController implements ActionListener{
         Database.getInstance().connectToDatabase();
         ArrayList rows =Database.getInstance().fetchDataFromDatabase();
         Database.getInstance().closeDatabaseConnection();
-        
         DefaultListModel listModel;
         listModel = new DefaultListModel();
+        
         for(int i=0;i<rows.size();i++)
         {
             String[] temp = (String[])rows.get(i);
@@ -45,7 +45,6 @@ public class TransactionController implements ActionListener{
         }
         
         view.getProductList().setModel(listModel);
-        
         view.setTitle("Make Transaction");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
@@ -70,7 +69,7 @@ public class TransactionController implements ActionListener{
             }
            
             SummaryView summaryView = new SummaryView();
-            SummaryController  summaryController = new SummaryController(summaryView);
+            SummaryController  summaryController = new SummaryController(summaryView,names,quantity);
             view.dispose();
         }
     }
