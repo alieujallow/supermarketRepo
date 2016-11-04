@@ -22,14 +22,22 @@ import supermarketpos.views.SummaryView;
  */
 public class SummaryController implements ActionListener {
 
-    //instance variables
+    /*
+    *instance variables
+    */
     SummaryView summaryView;
     String[] names;
     int[] quantity;
     Double[] prices;
     Double sum = 0.0;
 
-    //constructor
+    /**
+     * 
+     * constructor
+     * @param sv
+     * @param nm
+     * @param qty 
+     */
     public SummaryController(SummaryView sv, String[] nm, int[] qty) {
         names = nm;
         quantity = qty;
@@ -78,7 +86,11 @@ public class SummaryController implements ActionListener {
         summaryView.setVisible(true);
     }
 
-    //action performed method
+    /**
+     * 
+     * action performed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("cancel")) {
             summaryView.setVisible(false);

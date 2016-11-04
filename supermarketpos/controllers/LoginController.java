@@ -23,7 +23,10 @@ public class LoginController implements ActionListener {
 
     LoginView loginView;
 
-    //constructor
+    /**
+     * constructor
+     * @param lv 
+     */
     public LoginController(LoginView lv) {
         loginView = lv;
         loginView.getCancelButton().addActionListener(this);
@@ -34,7 +37,11 @@ public class LoginController implements ActionListener {
         loginView.pack();
     }
 
-    //action performed method
+    /**
+     * 
+     * action performed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("cancel")) {
             System.exit(0);

@@ -15,24 +15,30 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TableModel extends AbstractTableModel {
 
-    //instance variables
+    /*
+    *instance variables
+    */
     Database db;
     String[] columnNames;
     static Object[][] data;
     static TableModel theModel = null;
     static ArrayList<String[]> rows;
 
-    //constructor
+    /*
+    *constructor
+    */
     public TableModel() {
         db = Database.getInstance();
         db.connectToDatabase();
         columnNames = db.getColumnHeaders();
         rows = db.fetchDataFromDatabase();
         db.closeDatabaseConnection();
-        convertTo2DArray();
+        this.convertTo2DArray();
     }
 
-    //converts to two dimensional array
+    /*
+    *converts to two dimensional array
+    */
     public void convertTo2DArray() {
         data = new Object[rows.size()][4];
         for (int i = 0; i < rows.size(); i++) {
@@ -45,7 +51,7 @@ public class TableModel extends AbstractTableModel {
      *
      * @return data a static instance of the data array.
      */
-    public static ArrayList getArray() {
+    public static ArrayList<String[]> getArray() {
         return rows;
     }
 
@@ -101,16 +107,23 @@ public class TableModel extends AbstractTableModel {
         return false;
     }
 
-    //returns the column classes
+    /*
+    *returns the column classes
+    */
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
 
-    //returns the column names
+    /*
+    *returns the column names
+    */
     public String getColumnName(int column) {
         return columnNames[column];
     }
     
+    /*
+    *sets value at
+    */
     public void setValueAt(Object value, int row,int col)
     {
         data[row][col]=value;

@@ -30,33 +30,36 @@ public class AllProductsController implements ActionListener {
     TableModel model = null;
     Database db = null;
 
-    //constructor
+    /*
+    *constructor
+    */
     public AllProductsController(AllProductsView view, TableModel model, Database db) {
         this.view = view;
         this.model = model;
         this.db = db;
+
         view.getTable().setModel(model);
+    }
+
+    /**
+     * 
+     * control method
+     */
+    public void control() {
         view.getEditProductBtn().addActionListener(this);
         view.getDeleteProductBtn().addActionListener(this);
         view.getSearchButton().addActionListener(this);
+
         view.setTitle("All Products");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
         view.pack();
     }
 
-    //controll method
-    public void control() {
-        /*view.getEditProductBtn().addActionListener(this);
-        view.getDeleteProductBtn().addActionListener(this);
-
-        view.setTitle("All Products");
-        view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
-        view.setVisible(true);
-        view.pack();*/
-    }
-
-    // action peformed metho
+   /**
+    * action performed method
+    * @param e 
+    */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getEditProductBtn()) {
             int row = view.getTable().getSelectedRow();
@@ -70,9 +73,7 @@ public class AllProductsController implements ActionListener {
                 Product product = new Product(productName, price, quantity);
                 EditProductView editProductView = new EditProductView();
                 TableModel model = new TableModel();
-                //EditProductController EditProductController = new EditProductController(editProductView, product, productID, model, row,view);
-                EditProductController EditProductController = new EditProductController(editProductView, product, productID,row, model);
-
+                EditProductController EditProductController = new EditProductController(editProductView, product, productID, model, row);
             }
         } else if (e.getSource() == view.getDeleteProductBtn()) {
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?", null, JOptionPane.YES_NO_OPTION);
@@ -92,35 +93,40 @@ public class AllProductsController implements ActionListener {
                     JOptionPane.showMessageDialog(null, "Record deleted");
                 }
             }
-        }else if(e.getSource() == view.getSearchButton()){
+        }
+        else if(e.getSource() == view.getSearchButton()){
             String value = view.getSearchField().getText();
+            
             for (int row = 0; row <= view.getTable().getRowCount() - 1; row++) {
                 for (int col = 0; col <= view.getTable().getColumnCount() - 1; col++) {
                     if (value.equals(view.getTable().getValueAt(row, col))) {
+
                         // this will automatically set the view of the scroll in the location of the value
                         view.getTable().scrollRectToVisible(view.getTable().getCellRect(row, 0, true));
+
                         // this will automatically set the focus of the searched/selected row/value
                         view.getTable().setRowSelectionInterval(row, row);
+
                         for (int i = 0; i <= view.getTable().getColumnCount() - 1; i++) {
+
                             view.getTable().getColumnModel().getColumn(i).setCellRenderer(new HighlightRenderer());
                         }
                     }
                 }
             }
         }
-    }
-    
-    private class HighlightRenderer extends DefaultTableCellRenderer {
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            // everything as usual
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            // added behavior
-            if(row == table.getSelectedRow()) {
-                // this will customize that kind of border that will be use to highlight a row
-                setBorder(BorderFactory.createMatteBorder(2, 1, 2, 1, Color.BLACK));
-            }
 
-            return this;
-        }
     }
+private class HighlightRenderer extends DefaultTableCellRenderer {
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        if(row == table.getSelectedRow()) {
+            setBorder(BorderFactory.createMatteBorder(2, 1, 2, 1, Color.BLACK));
+        }
+
+        return this;
+    }
+}
 }

@@ -23,14 +23,23 @@ public class AddProductController implements ActionListener {
     Database db = null;
     TableModel model = null;
 
-    //constructor
+    /**
+     * 
+     * constructor
+     * @param view
+     * @param db
+     * @param model 
+     */
     public AddProductController(AddProductView view, Database db, TableModel model) {
         this.view = view;
         this.db = db;
         this.model = model;
     }
 
-    //controll method
+    /**
+     * 
+     * controll method
+     */
     public void control() {
         view.getAddProductBtn().addActionListener(this);
         view.getCancelBtn().addActionListener(this);
@@ -41,7 +50,10 @@ public class AddProductController implements ActionListener {
         view.pack();
     }
 
-    //action performed method
+    /**
+     * action performed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getAddProductBtn()) {
 

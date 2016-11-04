@@ -21,16 +21,25 @@ import supermarketpos.views.TransactionView;
  */
 public class TransactionController implements ActionListener {
 
-    //instance variables
+    /*
+    *instance variables
+    */
     TransactionView view = null;
    // Double[] prices;
 
-    //constructor
+    /**
+     * 
+     * constructor
+     * @param view 
+     */
     public TransactionController(TransactionView view) {
         this.view = view;
     }
 
-    //controll method
+    /**
+     * 
+     * control method
+     */
     public void control() {
         view.getCancelTransactionBtn().addActionListener(this);
         view.getProceedTransactionBtn().addActionListener(this);
@@ -51,7 +60,11 @@ public class TransactionController implements ActionListener {
         view.setVisible(true);
     }
 
-    //action performed method
+   /**
+    * 
+    * action performed
+    * @param e 
+    */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getCancelTransactionBtn()) {
             view.dispose();

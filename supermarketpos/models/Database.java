@@ -23,13 +23,20 @@ public class Database {
 
     private static Database instance = new Database();
 
+    /*
+    *
+    *gets the instance of the database
+    */
     public static Database getInstance() {
         return instance;
     }
 
     Connection conn = null;
 
-    // connects to the database and create tables
+   /**
+    * 
+    * connects to the database
+    */
     public void connectToDatabase() {
         final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
         final String DB_URL = "jdbc:mysql://localhost/";
@@ -97,7 +104,13 @@ public class Database {
         }
     }
 
-    //adding to the database
+    /**
+     * 
+     * adds to the database
+     * @param productName
+     * @param price
+     * @param quantity 
+     */
     public void addProductTodatabase(String productName, double price, int quantity) {
         try {
             String query = " insert into products ( productName,price,quantity)"
@@ -113,7 +126,11 @@ public class Database {
         }
     }
 
-    //deleting from the database
+    /**
+     * 
+     * deletes from the database
+     * @param name 
+     */
     public void delete(String name) {
         ResultSet resultSet;
         try {
@@ -134,7 +151,11 @@ public class Database {
         }
     }
 
-    //fetching products' information from the database. It returns an arrayList of the products.
+    /**
+     * 
+     * fetches data
+     * @return 
+     */
     public ArrayList fetchDataFromDatabase() {
         ResultSet resultSet;
         ArrayList<String[]> rows = new ArrayList<>();
@@ -156,7 +177,10 @@ public class Database {
         return rows;
     }
 
-    // closes the database connection
+    /**
+     * 
+     * close database connection
+     */
     public void closeDatabaseConnection() {
         if (conn != null) {
             try {
@@ -167,7 +191,11 @@ public class Database {
         }
     }
 
-    //returns the column headers in an array
+    /**
+     * 
+     * gets column headers
+     * @return 
+     */
     public String[] getColumnHeaders() {
         String[] columnNames = null;
         ResultSet resultSet;
@@ -187,7 +215,13 @@ public class Database {
         return columnNames;
     }
 
-    //updates product information
+    /**
+     * updates product
+     * @param productName
+     * @param price
+     * @param quantity
+     * @param productid 
+     */
     public void updateProduct(String productName, double price, int quantity, int productid) {
         try {
             PreparedStatement ps = conn.prepareStatement("UPDATE products SET productName=?, price=?,"
@@ -202,7 +236,15 @@ public class Database {
         }
     }
 
-   //insert intto transactions table
+   /**
+    * 
+    * inserts transaction
+    * @param proID
+    * @param proN
+    * @param rol
+    * @param usN
+    * @param date 
+    */
     public void insertTransaction(int proID,String proN,String rol,String usN,String date)
     {
         try {
@@ -214,16 +256,51 @@ public class Database {
             preparedStatement.setString(3, rol);
             preparedStatement.setString(4, usN);
             preparedStatement.setString(5, date);
-            
+           
             preparedStatement.execute();
         } catch (Exception ex) {
             System.out.println(ex);
-            System.err.println("Could not add to the database");
+            System.err.println("Could not add to transactions");
         }  
     }
     
     
-    // validates employess credentials
+   /**
+    * 
+    * gets data
+    * @return 
+    */
+    public ArrayList getDataFromTransactionsTable()
+    {
+        ResultSet resultSet;
+        ArrayList<String[]> rows = new ArrayList<>();
+        try {
+            Statement statement = conn.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM transactions");
+            while (resultSet.next()) {
+                String[] tmp = new String[4];
+                tmp[0] = resultSet.getString(1);
+                tmp[1] = resultSet.getString(2);
+                tmp[2] = resultSet.getString(3);
+                tmp[3] = resultSet.getString(4);
+                rows.add(tmp);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+            System.err.println("Could not fetch.............");
+        }
+        return rows;
+    }
+    
+    
+    
+    /**
+     * 
+     * validates credentials
+     * @param username
+     * @param password
+     * @return 
+     */
     public boolean validateEmployee(String username, String password) {
 
         boolean isValid = false;

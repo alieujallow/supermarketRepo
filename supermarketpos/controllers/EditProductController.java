@@ -26,10 +26,18 @@ public class EditProductController implements ActionListener {
     Product product;
     int productID, row;
     TableModel model;
-    AllProductsView allproductsView;
+    //AllProductsView allproductsView;
 
-    //constructor
-    public EditProductController(EditProductView epv, Product pr, int id, int row,TableModel model) {
+    /**
+     * 
+     * constructor
+     * @param epv
+     * @param pr
+     * @param id
+     * @param model
+     * @param row 
+     */
+    public EditProductController(EditProductView epv, Product pr, int id, TableModel model, int row) {
         //allproductsView = allproductsV;
         editProductView = epv;
         product = pr;
@@ -47,7 +55,11 @@ public class EditProductController implements ActionListener {
         editProductView.getSaveButton().setActionCommand("save");
     }
 
-    //action performed method
+    /**
+     * 
+     * action performed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("cancel")) {
             editProductView.setVisible(false);
@@ -75,14 +87,7 @@ public class EditProductController implements ActionListener {
                         Database.getInstance().connectToDatabase();
                         Database.getInstance().updateProduct(productName, p, q, productID);
                         Database.getInstance().closeDatabaseConnection();
-                        
-                        
-                       /* TableModel model = new TableModel();
-                        AllProductsView  allProductsView  = new AllProductsView();
-                        AllProductsController allProductsController = new AllProductsController(allProductsView,model,Database.getInstance());
-                        
-                         allproductsView.dispose();*/
-                      
+
                         model.fireTableRowsUpdated(row, row);
                         editProductView.dispose();
 

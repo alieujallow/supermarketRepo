@@ -21,6 +21,9 @@ import supermarketpos.views.TransactionView;
  */
 public class MenuController implements ActionListener {
 
+    /*
+    *instance variables
+    */
     MenuView view = null;
     String username = "Welcome  ";
 
@@ -28,7 +31,11 @@ public class MenuController implements ActionListener {
         this.view = view;
         username += name;
     }
-
+    
+    /**
+     * 
+     * control method
+     */
     public void control() {
         view.getAddProductBtn().addActionListener(this);
         view.getViewProductBtn().addActionListener(this);
@@ -37,7 +44,12 @@ public class MenuController implements ActionListener {
         view.getUsernameLabel().setText(username);
         view.setVisible(true);
     }
-
+    
+    /**
+     * 
+     * action performed
+     * @param e 
+     */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == view.getAddProductBtn()) {
             AddProductView productView = new AddProductView();
@@ -51,7 +63,7 @@ public class MenuController implements ActionListener {
             transactionController.control();
         } else if (e.getSource() == view.getViewProductBtn()) {
             AllProductsView productsView = new AllProductsView();
-            TableModel model = TableModel.getInstance();
+            TableModel model = new TableModel();
             Database db = new Database();
             AllProductsController productsController = new AllProductsController(productsView, model, db);
             productsController.control();
