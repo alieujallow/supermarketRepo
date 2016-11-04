@@ -7,6 +7,7 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import supermarketpos.views.SummaryView;
 
 /**
@@ -23,6 +24,9 @@ public class SummaryController implements ActionListener
         summaryView.getCheckOutButton().addActionListener(this);
         summaryView.getCancelButton().setActionCommand("cancel");
         summaryView.getCheckOutButton().setActionCommand("checkout");
+        
+        summaryView.setTitle("Summary of Transaction");
+        summaryView.setVisible(true);
     }
     
     public void actionPerformed(ActionEvent e)
@@ -33,7 +37,10 @@ public class SummaryController implements ActionListener
         }
         else if(e.getActionCommand().equalsIgnoreCase("checkout"))
         {
+            String amount = JOptionPane.showInputDialog(null, "Enter the amount");
+            double change = Double.parseDouble(amount);
             
+            JOptionPane.showMessageDialog(null, "CHANGE: " + change);
         }
     }
 }
