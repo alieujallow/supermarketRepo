@@ -43,26 +43,26 @@ public class LoginController implements ActionListener
           String userName =loginView.getEmployeeIDTextField().getText();
           char[] password = loginView.getPasswordTextField().getPassword();
           String pass = String.valueOf(password);
-          
+
           if(!userName.equals("") && !pass.equals(""))
           {
-          Database.getInstance().connectToDatabase();
-          if(Database.getInstance().validateEmployee(userName,pass))
-          {
-              MenuView menuView = new MenuView();
-              MenuController  menuController = new MenuController(menuView,userName);
-              menuController.control();
-              Database.getInstance().closeDatabaseConnection();
-              loginView.setVisible(false);
-          }
-          else
-          {
-             JOptionPane.showMessageDialog(loginView,"You have entered a wrong passoword or employeeID",
-                                            "Error Message " ,JOptionPane.ERROR_MESSAGE);
-             loginView.getEmployeeIDTextField().setText("");
-             loginView.getPasswordTextField().setText("");
-             Database.getInstance().closeDatabaseConnection();
-          }
+            Database.getInstance().connectToDatabase();
+            if(Database.getInstance().validateEmployee(userName,pass))
+            {
+                MenuView menuView = new MenuView();
+                MenuController  menuController = new MenuController(menuView,userName);
+                menuController.control();
+                Database.getInstance().closeDatabaseConnection();
+                loginView.setVisible(false);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(loginView,"You have entered a wrong passoword or employeeID",
+                                              "Error Message " ,JOptionPane.ERROR_MESSAGE);
+               loginView.getEmployeeIDTextField().setText("");
+               loginView.getPasswordTextField().setText("");
+               Database.getInstance().closeDatabaseConnection();
+            }
          }
           else
           {

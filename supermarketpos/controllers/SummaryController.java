@@ -8,6 +8,7 @@ package supermarketpos.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import supermarketpos.models.Database;
 import supermarketpos.views.SummaryView;
 
@@ -21,11 +22,13 @@ public class SummaryController implements ActionListener
     String[]names;
     int[]quantity;
     Double[] prices;
+    
     public SummaryController(SummaryView sv,String[]nm, int[]qty)
     {
         names=nm;
         quantity=qty;
         summaryView=sv;
+
         prices= new Double[names.length];
         Database.getInstance().connectToDatabase();
         ArrayList rows =Database.getInstance().fetchDataFromDatabase();
@@ -53,10 +56,16 @@ public class SummaryController implements ActionListener
         }
         summaryView.getreceipt().append("\t************************************************\n");
         summaryView.getreceipt().append("\tTOTAL\t"+totalQuantity+"\tGHC "+sum);
+
         summaryView.getCancelButton().addActionListener(this);
         summaryView.getCheckOutButton().addActionListener(this);
         summaryView.getCancelButton().setActionCommand("cancel");
         summaryView.getCheckOutButton().setActionCommand("checkout");
+        
+        
+        summaryView.setDefaultCloseOperation(summaryView.DISPOSE_ON_CLOSE);
+        summaryView.setTitle("Summary of Transaction");
+        summaryView.setVisible(true);
     }
     public void actionPerformed(ActionEvent e)
     {
@@ -66,7 +75,11 @@ public class SummaryController implements ActionListener
         }
         else if(e.getActionCommand().equalsIgnoreCase("checkout"))
         {
+
+            String amount = JOptionPane.showInputDialog(null, "Enter the amount");
+            double change = Double.parseDouble(amount);
             
+            JOptionPane.showMessageDialog(null, "CHANGE: " + change);
         }
     }
 }

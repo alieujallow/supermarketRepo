@@ -39,7 +39,7 @@ public class Database
     
     //  Database credentials
     final String USER = "root";
-    final String PASSWORD = "";
+    final String PASSWORD = "kontihene12";
     Statement statement;
     try {
       //Register JDBC driver
@@ -131,7 +131,7 @@ public class Database
                     String deleteProduct = "DELETE FROM products WHERE productName= ?";
                     java.sql.PreparedStatement preparedStatement = conn.prepareStatement(deleteProduct);
                     preparedStatement.setString(1, name);
-                    preparedStatement.execute();
+                    preparedStatement.executeUpdate();
                     break;
                 }
             }
@@ -210,8 +210,9 @@ public class Database
             System.out.println("could not update");
         }
     } 
-    
+
     public boolean validateEmployee(String username,String password){
+
         boolean isValid = false;
         try{
              String query = "SELECT * FROM employees WHERE userName=?";
@@ -220,7 +221,7 @@ public class Database
              ResultSet resultSet = preparedStatement.executeQuery();
              while(resultSet.next()){
                 if(resultSet.getString(3).equalsIgnoreCase("clerk") && 
-                            resultSet.getString(5).equalsIgnoreCase(password)){
+                            resultSet.getString(5).equalsIgnoreCase(String.valueOf(password))){
                     isValid = true;
                 } 
             }
