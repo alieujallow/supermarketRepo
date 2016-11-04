@@ -16,6 +16,7 @@ public class SummaryView extends javax.swing.JFrame {
      */
     public SummaryView() {
         initComponents();
+        setVisible(true);
     }
 
     /**

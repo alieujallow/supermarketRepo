@@ -16,6 +16,7 @@ public class EditProductView extends javax.swing.JFrame {
      */
     public EditProductView() {
         initComponents();
+        setVisible(true);
     }
 
     /**

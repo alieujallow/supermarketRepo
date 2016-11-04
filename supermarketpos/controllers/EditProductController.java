@@ -8,6 +8,7 @@ package supermarketpos.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import supermarketpos.models.Database;
+import supermarketpos.models.Product;
 import supermarketpos.views.EditProductView;
 
 /**
@@ -17,15 +18,26 @@ import supermarketpos.views.EditProductView;
 public class EditProductController implements ActionListener
 {
     EditProductView editProductView;
+    Product product;
     int productID;
-    public EditProductController(EditProductView epv,int id)
+    public EditProductController(EditProductView epv,Product pr,int id)
     {
         editProductView=epv;
+        product=pr;
         productID=id;
+        
+        editProductView.getNameTextField().setText(product.getProductName());
+        editProductView.getQuantityTextField().setText(product.getQuantity().toString());
+        editProductView.getPriceTextField().setText(product.getPrice().toString());
+    
         editProductView.getCancelButton().addActionListener(this);
         editProductView.getSaveButton().addActionListener(this);
         editProductView.getCancelButton().setActionCommand("cancel");
         editProductView.getSaveButton().setActionCommand("save");      
+    }
+
+    EditProductController() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void actionPerformed(ActionEvent e)
@@ -39,7 +51,9 @@ public class EditProductController implements ActionListener
             String productName= editProductView.getNameTextField().getText();
             int quantity = Integer.parseInt(editProductView.getQuantityTextField().getText());
             double price = Double.parseDouble(editProductView.getPriceTextField().getText());
+            Database.getInstance().connectToDatabase();
             Database.getInstance().updateProduct(productName,price,quantity,productID);
+            Database.getInstance().closeDatabaseConnection();
             editProductView.setVisible(false);
         }
     }

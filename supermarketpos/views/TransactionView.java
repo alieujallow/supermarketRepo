@@ -6,6 +6,7 @@
 package supermarketpos.views;
 
 import javax.swing.JButton;
+import javax.swing.JList;
 
 /**
  *
@@ -31,6 +32,8 @@ public class TransactionView extends javax.swing.JFrame {
 
         cancelTransactionBtn = new javax.swing.JButton();
         proceedTransactionBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productList = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,21 +51,29 @@ public class TransactionView extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(productList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(414, Short.MAX_VALUE)
+                .addContainerGap(311, Short.MAX_VALUE)
                 .addComponent(cancelTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(proceedTransactionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(500, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelTransactionBtn)
                     .addComponent(proceedTransactionBtn))
@@ -122,9 +133,16 @@ public class TransactionView extends javax.swing.JFrame {
     public JButton getCancelTransactionBtn(){
         return cancelTransactionBtn;
     }
+    
+    public JList getProductList()
+    {
+        return productList;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelTransactionBtn;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton proceedTransactionBtn;
+    private javax.swing.JList productList;
     // End of variables declaration//GEN-END:variables
 }
