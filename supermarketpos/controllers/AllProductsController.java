@@ -39,19 +39,26 @@ public class AllProductsController implements ActionListener{
         view.setTitle("All Products");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
+        view.pack();
     }
     
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == view.getEditProductBtn())
         {
             int row =view.getTable().getSelectedRow();
-            int productID = Integer.parseInt((String)model.getValueAt(row,0));
-            String productName = (String)model.getValueAt(row,1);
-            int quantity = Integer.parseInt((String)model.getValueAt(row,2));
-            double price = Double.parseDouble((String)model.getValueAt(row,3));
-            Product product = new Product(productName,price,quantity);
-            EditProductView  editProductView = new EditProductView();
-            EditProductController EditProductController = new EditProductController(editProductView,product,productID);
+            
+            if(row != -1){
+                int productID = Integer.parseInt((String)model.getValueAt(row,0));
+                String productName = (String)model.getValueAt(row,1);
+                double price = Double.parseDouble((String)model.getValueAt(row,2));
+                int quantity = Integer.parseInt((String)model.getValueAt(row,3));
+                
+                Product product = new Product(productName, price, quantity);
+                EditProductView  editProductView = new EditProductView();
+                TableModel model = new TableModel();
+                EditProductController EditProductController = new 
+                    EditProductController(editProductView, product, productID, model, row);
+            }
         }
         else if(e.getSource() == view.getDeleteProductBtn()){
             int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?"

@@ -35,24 +35,48 @@ public class AddProductController implements ActionListener{
         view.setTitle("Add new Product");
         view.setDefaultCloseOperation(view.DISPOSE_ON_CLOSE);
         view.setVisible(true);
+        view.pack();
     }
     
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == view.getAddProductBtn()){
-            
+                  
             String productName = view.getProductNameJtf().getText();
-            double price = Double.parseDouble(view.getPriceJtf().getText());
-            int quantity = Integer.parseInt(view.getQuantityJtf().getText());
+            String price = view.getPriceJtf().getText();
+            String quantity = view.getQuantityJtf().getText();
             
-            db.connectToDatabase();
-            db.addProductTodatabase(productName, price, quantity);
-            db.closeDatabaseConnection();
+            if(price != null && !price.equalsIgnoreCase("") && quantity != null && !quantity.equalsIgnoreCase("") &&
+                   productName != null && !productName.equalsIgnoreCase("")){
+            try{
+                int q = Integer.parseInt(view.getQuantityJtf().getText());
+                double p = Double.parseDouble(view.getPriceJtf().getText());
 
-            JOptionPane.showMessageDialog(null, "Product added successfully");
-            
-            view.getProductNameJtf().setText("");
-            view.getPriceJtf().setText("");
-            view.getQuantityJtf().setText("");
+                if(p > 0 && q > 0){
+                    db.connectToDatabase();
+                    db.addProductTodatabase(productName, p, q);
+                    db.closeDatabaseConnection();
+
+                    JOptionPane.showMessageDialog(null, "Product added successfully");
+
+                    view.getProductNameJtf().setText("");
+                    view.getPriceJtf().setText("");
+                    view.getQuantityJtf().setText("");
+                }
+                else{
+                    JOptionPane.showMessageDialog(view, "Price and Quantity must be more than 0"
+                      , "Error Message " ,JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(view, "Price and Quantity must be "
+                       + "numeric", "Error Message " ,JOptionPane.ERROR_MESSAGE);
+            }
+        }
+            else{
+                JOptionPane.showMessageDialog(view, "Fields cannot be empty "
+                      , "Error Message " ,JOptionPane.ERROR_MESSAGE);
+            }
+           
         }
         else if(e.getSource() == view.getCancelBtn()){
             view.dispose();

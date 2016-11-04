@@ -12,7 +12,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import supermarketpos.models.Database;
-import supermarketpos.models.TableModel;
 import supermarketpos.views.SummaryView;
 import supermarketpos.views.TransactionView;
 
@@ -70,7 +69,7 @@ public class TransactionController implements ActionListener{
             }
            
             SummaryView summaryView = new SummaryView();
-            SummaryController  summaryController = new SummaryController(summaryView);
+            SummaryController  summaryController = new SummaryController(summaryView, names, quantity);
             view.dispose();
         }
     }
