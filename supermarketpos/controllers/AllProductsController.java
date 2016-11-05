@@ -72,7 +72,6 @@ public class AllProductsController implements ActionListener {
 
                 Product product = new Product(productName, price, quantity);
                 EditProductView editProductView = new EditProductView();
-                TableModel model = new TableModel();
                 EditProductController EditProductController = new EditProductController(editProductView, product, productID, model, row);
             }
         } else if (e.getSource() == view.getDeleteProductBtn()) {
