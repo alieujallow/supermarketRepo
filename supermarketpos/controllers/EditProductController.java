@@ -89,9 +89,6 @@ public class EditProductController implements ActionListener {
 
                         model.fireTableRowsUpdated(row, row);
                         editProductView.dispose();
-
-                   // allproductsView.control();
-                        //allproductsView.dispose();
                     } else {
                         JOptionPane.showMessageDialog(editProductView, "Price and Quantity must be more than 0", "Error Message ", JOptionPane.ERROR_MESSAGE);
                     }

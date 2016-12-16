@@ -27,9 +27,9 @@ public class MenuController implements ActionListener {
     MenuView view = null;
     String username = "Welcome  ";
 
-    public MenuController(MenuView view, String name) {
+    public MenuController(MenuView view) {
         this.view = view;
-        username += name;
+        //username += name;
     }
     
     /**

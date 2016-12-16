@@ -8,7 +8,6 @@ package supermarketpos.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import supermarketpos.models.Database;
 import supermarketpos.views.LoginView;
 import supermarketpos.views.MenuView;
@@ -45,7 +44,7 @@ public class LoginController implements ActionListener
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equalsIgnoreCase("cancel")) {
             System.exit(0);
-        } else if (e.getActionCommand().equalsIgnoreCase("login")) {
+        } /*else if (e.getActionCommand().equalsIgnoreCase("login")) {
             String userName = loginView.getEmployeeIDTextField().getText();
             char[] password = loginView.getPasswordTextField().getPassword();
             String pass = String.valueOf(password);
@@ -69,7 +68,14 @@ public class LoginController implements ActionListener
                 JOptionPane.showMessageDialog(loginView, "You should enter both your username and password",
                         "Error Message ", JOptionPane.ERROR_MESSAGE);
             }
+        }*/
+          else if (e.getActionCommand().equalsIgnoreCase("login")) {
+                    MenuView menuView = new MenuView();
+                    MenuController menuController = new MenuController(menuView);
+                    menuController.control();
+                    Database.getInstance().closeDatabaseConnection();
+                    loginView.setVisible(false);
+            } 
         }
     }
 
-}

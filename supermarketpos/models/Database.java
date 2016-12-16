@@ -77,7 +77,7 @@ public class Database
                     + ");";
 
             
-            String user1  = "Insert into employees (name,role,userName,password) values(\"Alieu jallow\",\"clerk\",\"arl\",\"12\");";
+            //String user1  = "Insert into employees (name,role,userName,password) values(\"Alieu jallow\",\"clerk\",\"arl\",\"12\");";
             
             String createTransactionsTable = "CREATE TABLE IF NOT EXISTS transactions(\n"
              + "  transactionID Int UNIQUE NOT NULL AUTO_INCREMENT,\n"
@@ -95,7 +95,7 @@ public class Database
             statement.executeUpdate(createProductTable);
             statement.executeUpdate(createEmployeesTable);
             statement.executeUpdate(createTransactionsTable);
-            statement.execute(user1);
+            //statement.execute(user1);
 
         } catch (Exception ex) {
             System.err.println("Could not connect to the database");
